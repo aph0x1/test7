@@ -970,15 +970,14 @@
     }
 
     cookieCommand.prototype.init = function() {
-      this.command = 'cookie';
+      this.command = 'cerveza';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'mod';
     };
 
     cookieCommand.prototype.getCookie = function() {
       var c, cookies;
-      cookies = ["a chocolate chip cookie", "a sugar cookie", "an oatmeal raisin cookie", "a 'special' brownie", "an animal cracker", "a scooby snack", "a blueberry muffin", "a cupcake"];
-      c = Math.floor(Math.random() * cookies.length);
+      cookies = [" una cerveza bien fria!!!"];
       return cookies[c];
     };
 
@@ -989,10 +988,10 @@
       if (msg.length > 8) {
         user = r.lookupUser(msg.substr(8));
         if (user === false) {
-          API.sendChat("/em doesn't see '" + msg.substr(8) + "' in room and eats cookie himself");
+          API.sendChat("/em No ve a  '" + msg.substr(8) + "' y se toma su cerveza");
           return false;
         } else {
-          return API.sendChat("@" + user.username + ", @" + this.msgData.from + " has rewarded you with " + this.getCookie() + ". Enjoy.");
+          return API.sendChat("@" + user.username + ", @" + this.msgData.from + " te ha dado " + this.getCookie() + ". Disfrutala!.");
         }
       }
     };
@@ -1124,7 +1123,7 @@
 
     whyWootCommand.prototype.functionality = function() {
       var msg, nameIndex;
-      msg = "We dislike AFK djs. We calculate your AFK status by checking the last time you  		Woot'd or spoke. If you don't woot, I'll automagically remove you. Use our AutoWoot			script to avoid being removed: http://bit.ly/McZdWw";
+      msg = "We dislike AFK djs. We calculate your AFK status by checking the last time you    	Woot'd or spoke. If you don't woot, I'll automagically remove you. Use our AutoWoot			script to avoid being removed: http://bit.ly/McZdWw";
       if ((nameIndex = this.msgData.message.indexOf('@')) !== -1) {
         return API.sendChat(this.msgData.message.substr(nameIndex) + ', ' + msg);
       } else {
@@ -2263,7 +2262,7 @@
   beggar = function(chat) {
     var msg, r, responses;
     msg = chat.message.toLowerCase();
-    responses = ["Good idea @{beggar}!  Don't earn your fans or anything thats so yesterday", "Guys @{beggar} asked us to fan him!  Lets all totally do it! à² _à² ", "srsly @{beggar}? à² _à² ", "@{beggar}.  Earning his fans the good old fashioned way.  Hard work and elbow grease.  A true american."];
+    responses = ["Good idea @{beggar}!  Don't earn your fans or anything thats so yesterday", "Guys @{beggar} asked us to fan him!  Lets all totally do it! à² _à² ", "srsly @{beggar}? à² _à² ", "@{beggar}.  Earning his fans the good old fashioned way.  Hard work and elbow grease.  A true american."];
     r = Math.floor(Math.random() * responses.length);
     if (msg.indexOf('fan me') !== -1 || msg.indexOf('fan for fan') !== -1 || msg.indexOf('fan pls') !== -1 || msg.indexOf('fan4fan') !== -1 || msg.indexOf('add me to fan') !== -1) {
       return API.sendChat(responses[r].replace("{beggar}", chat.from));
