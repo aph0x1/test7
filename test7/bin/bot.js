@@ -977,7 +977,8 @@
 
     cookieCommand.prototype.getCookie = function() {
       var c, cookies;
-      cookies = [" una cerveza bien fria!!!"];
+      cookies = [" una cerveza bien fria!!!","una cerveza"];
+      c = Math.floor(Math.random() * cookies.length);
       return cookies[c];
     };
 
