@@ -1472,8 +1472,8 @@
     forceSkipCommand.prototype.functionality = function() {
       var msg, param;
       msg = this.msgData.message;
-      if (msg.length > 11) {
-        param = msg.substr(11);
+      if (msg.length > 12) {
+        param = msg.substr(12);
         if (param === 'activar') {
           data.forceSkip = true;
           return API.sendChat("La opción de forzar salto ha sido activada.");
@@ -1509,7 +1509,7 @@
       return API.sendChat(msg);
     };
 
-    fbCommand.prototype.msgs = ["Unete a nuestro grupo de FB: {seguir}", "¿Quiéres saber cuando hacemos algun evento? síguenos: ({seguir}) y enterate de todo!"];
+    fbCommand.prototype.msgs = ["Unete a nuestro grupo de FB: {seguir}", "¿Quiéres saber cuando hacemos algun evento? síguenos: {seguir} y enterate de todo!"];
 
     return fbCommand;
 
