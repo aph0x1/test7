@@ -977,10 +977,10 @@
     };
 
     cervezaCommand.prototype.getCookie = function() {
-      var c, cervezas;
-      cervezas = ["a chocolate chip cookie", "a sugar cookie", "an oatmeal raisin cookie", "a 'special' brownie", "an animal cracker", "a scooby snack", "a blueberry muffin", "a cupcake"];
-      c = Math.floor(Math.random() * cervezas.length);
-      return cervezas[c];
+      var c, cookies;
+      cookies = ["a chocolate chip cookie", "a sugar cookie", "an oatmeal raisin cookie", "a 'special' brownie", "an animal cracker", "a scooby snack", "a blueberry muffin", "a cupcake"];
+      c = Math.floor(Math.random() * cookies.length);
+      return cookies[c];
     };
 
     cervezaCommand.prototype.functionality = function() {
