@@ -1564,7 +1564,7 @@
     }
 
     commandsCommand.prototype.init = function() {
-      this.command = '/commands';
+      this.command = '/comandos';
       this.parseType = 'exact';
       return this.rankPrivelege = 'user';
     };
@@ -1816,7 +1816,7 @@
     if (data.currentsong === null) {
       data.newSong();
     } else {
-      API.sendChat("/em: Hemos escuchado " + data.currentsong.title + " por " + data.currentsong.author + ". Estadísticas: Woots: " + data.currentwoots + ", Mehs: " + data.currentmehs + ", Me Gusta: " + data.currentcurates + ".");
+      API.sendChat("/em: Hemos escuchado: " + data.currentsong.title + " por " + data.currentsong.author + ". Estadísticas: Woots: " + data.currentwoots + ", Mehs: " + data.currentmehs + ", Me Gusta: " + data.currentcurates + ".");
       data.newSong();
       document.getElementById("button-vote-positive").click();
     }
