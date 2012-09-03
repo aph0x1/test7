@@ -870,7 +870,7 @@
     }
 
     tacoCommand.prototype.init = function() {
-      this.command = 'taco';
+      this.command = 'sorete';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'user';
     };
