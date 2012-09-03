@@ -971,7 +971,7 @@
     }
 
     cervezaCommand.prototype.init = function() {
-      this.command = 'cerveza';
+      this.command = 'cookie';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'mod';
     };
