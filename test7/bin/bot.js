@@ -1344,7 +1344,7 @@
     }
 
     swapCommand.prototype.init = function() {
-      this.command = '/swap';
+      this.command = '/cambiar';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'mod';
     };
@@ -1352,23 +1352,23 @@
     swapCommand.prototype.functionality = function() {
       var msg, r, swapRegex, userAdd, userRemove, users;
       msg = this.msgData.message;
-      swapRegex = new RegExp("^/swap @(.+) for @(.+)$");
+      swapRegex = new RegExp("^/cambiar @(.+) por @(.+)$");
       users = swapRegex.exec(msg).slice(1);
       r = new RoomHelper();
       if (users.length === 2) {
         userRemove = r.lookupUser(users[0]);
         userAdd = r.lookupUser(users[1]);
         if (userRemove === false || userAdd === false) {
-          API.sendChat('Error parsing one or both names');
+          API.sendChat('Error en los nombres de usuario');
           console.log('Err users', users, userRemove, userAdd);
           return false;
         } else {
           return data.lockBooth(function() {
             API.moderateRemoveDJ(userRemove.id);
-            API.sendChat("Removing " + userRemove.username + "...");
+            API.sendChat("Sacando " + userRemove.username + "...");
             return setTimeout(function() {
               API.moderateAddDJ(userAdd.id);
-              API.sendChat("Adding " + userAdd.username + "...");
+              API.sendChat("Agregando " + userAdd.username + "...");
               return setTimeout(function() {
                 return data.unlockBooth();
               }, 1500);
@@ -1376,7 +1376,7 @@
           });
         }
       } else {
-        return API.sendChat("Command didn't parse into two seperate usernames");
+        return API.sendChat("EL comando no funciona si hay nombres de usuarios separados");
       }
     };
 
