@@ -971,7 +971,7 @@
     }
 
     cervezaCommand.prototype.init = function() {
-      this.command = 'cookie';
+      this.command = 'cerveza';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'mod';
     };
@@ -992,7 +992,7 @@
           API.sendChat("/em doesn't see '" + msg.substr(8) + "' in room and eats cookie himself");
           return false;
         } else {
-          return API.sendChat("@" + user.username + ", @" + this.msgData.from + " te ha dado una " + this.getCookie() + ". Enjoy.");
+          return API.sendChat("@" + user.username + ", @" + this.msgData.from + " te ha dado una " + this.getCookie() + ". Disfrutala!.");
         }
       }
     };
