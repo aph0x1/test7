@@ -977,10 +977,9 @@
     };
 
     cervezaCommand.prototype.getCookie = function() {
-      var c, cervezas;
-      cervezas = ["a chocolate chip cookie", "a sugar cookie", "an oatmeal raisin cookie", "a 'special' brownie", "an animal cracker", "a scooby snack", "a blueberry muffin", "a cupcake"];
-      c = Math.floor(Math.random() * cervezas.length);
-      return cervezas[c];
+      var cervezas;
+      cervezas = ["cerveza"];
+      return cervezas;
     };
 
     cervezaCommand.prototype.functionality = function() {
@@ -993,7 +992,7 @@
           API.sendChat("/em doesn't see '" + msg.substr(8) + "' in room and eats cookie himself");
           return false;
         } else {
-          return API.sendChat("@" + user.username + ", @" + this.msgData.from + " has rewarded you with " + this.getCookie() + ". Enjoy.");
+          return API.sendChat("@" + user.username + ", @" + this.msgData.from + " te ha dado una " + this.getCookie() + ". Enjoy.");
         }
       }
     };
