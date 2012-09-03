@@ -400,7 +400,7 @@
   })();
 
   pupOnline = function() {
-    return API.sendChat("WERF");
+    return API.sendChat("Bot Activado");
   };
 
   populateUserData = function() {
@@ -1619,7 +1619,7 @@
     }
 
     disconnectLookupCommand.prototype.init = function() {
-      this.command = '/off';
+      this.command = '/dclookup';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'mod';
     };
@@ -1627,8 +1627,8 @@
     disconnectLookupCommand.prototype.functionality = function() {
       var cmd, dcHour, dcLookupId, dcMeridian, dcMins, dcSongsAgo, dcTimeStr, dcUser, disconnectInstances, givenName, id, recentDisconnect, resp, u, _i, _len, _ref, _ref1;
       cmd = this.msgData.message;
-      if (cmd.length > 5) {
-        givenName = cmd.slice(5);
+      if (cmd.length > 11) {
+        givenName = cmd.slice(11);
         _ref = data.users;
         for (id in _ref) {
           u = _ref[id];
@@ -1643,7 +1643,7 @@
               }
             }
             if (disconnectInstances.length > 0) {
-              resp = u.getUser().username + ' se ha desconectado ' + disconnectInstances.length.toString() + ' ves';
+              resp = u.getUser().username + ' has disconnected ' + disconnectInstances.length.toString() + ' time';
               if (disconnectInstances.length === 1) {
                 resp += '. ';
               } else {
@@ -1658,25 +1658,25 @@
               dcMeridian = dcHour % 12 === dcHour ? 'AM' : 'PM';
               dcTimeStr = '' + dcHour + ':' + dcMins + ' ' + dcMeridian;
               dcSongsAgo = data.songCount - recentDisconnect.songCount;
-              resp += 'Su ultima desconección fue a las ' + dcTimeStr + ' (' + dcSongsAgo + ' canciónes). ';
+              resp += 'Their most recent disconnect was at ' + dcTimeStr + ' (' + dcSongsAgo + ' songs ago). ';
               if (recentDisconnect.waitlistPosition !== void 0) {
-                resp += 'El ' + recentDisconnect.waitlistPosition + ' song';
+                resp += 'They were ' + recentDisconnect.waitlistPosition + ' song';
                 if (recentDisconnect.waitlistPosition > 1) {
                   resp += 's';
                 }
-                resp += '  estaba fuera de la cabina.';
+                resp += ' away from the DJ booth.';
               } else {
-                resp += ' El no estaba en la lista de espera..';
+                resp += 'They were not on the waitlist.';
               }
               API.sendChat(resp);
               return;
             } else {
-              API.sendChat("No he visto a  " + u.getUser().username + " desconectado.");
+              API.sendChat("I haven't seen " + u.getUser().username + " disconnect.");
               return;
             }
           }
         }
-        return API.sendChat("No he visto a ese usuario en la sala '" + givenName + "'.");
+        return API.sendChat("I don't see a user in the room named '" + givenName + "'.");
       }
     };
 
@@ -1822,7 +1822,7 @@
     if (data.currentsong === null) {
       data.newSong();
     } else {
-      API.sendChat("/em: Just played " + data.currentsong.title + " by " + data.currentsong.author + ". Stats: Woots: " + data.currentwoots + ", Mehs: " + data.currentmehs + ", Loves: " + data.currentcurates + ".");
+      API.sendChat("/em: Hemos escuchado " + data.currentsong.title + " de " + data.currentsong.author + ". Estadísticas: Woots: " + data.currentwoots + ", Mehs: " + data.currentmehs + ", Me Gusta: " + data.currentcurates + ".");
       data.newSong();
       document.getElementById("button-vote-positive").click();
       if ((data.currentsong.author.indexOf("Skrillex") !== -1) || (data.currentsong.title.indexOf("Skrillex") !== -1)) {
@@ -1880,7 +1880,7 @@
       sender = API.getUser(chat.fromID);
       if (!sender.ambassador && !sender.moderator && !sender.owner && !sender.superuser) {
         if (!data.users[chat.fromID]["protected"]) {
-          API.sendChat("Don't spam room links you ass clown");
+          API.sendChat("No hagas spam!! ");
           return API.moderateDeleteChat(chat.chatID);
         } else {
           return API.sendChat("I'm supposed to kick you, but you're just too darn pretty.");
