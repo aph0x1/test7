@@ -1552,10 +1552,8 @@
       return this.rankPrivelege = 'mod';
     };
 
-    skipCommand.prototype.functionality = function(){
-      return API.sendChat("¡A la orden capitán!");
-     {  
-      return API.moderateForceSkip();}
+    skipCommand.prototype.functionality = function() return API.sendChat("¡A la orden capitán!"); {
+      return API.moderateForceSkip();
     };
 
     return skipCommand;
