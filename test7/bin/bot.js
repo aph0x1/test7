@@ -1302,7 +1302,7 @@
     lockCommand.prototype.init = function() {
       this.command = '/lock';
       this.parseType = 'exact';
-      return this.rankPrivelege = 'mod';
+      return this.rankPrivelege = 'mod','host';
     };
 
     lockCommand.prototype.functionality = function() {
