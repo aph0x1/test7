@@ -971,14 +971,14 @@
     }
 
     cervezaCommand.prototype.init = function() {
-      this.command = 'coo';
+      this.command = 'cerveza';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'mod';
     };
 
     cervezaCommand.prototype.getCookie = function() {
       var cervezas;
-      cervezas = ["cerveza"];
+      cervezas = ["rica y deliciosa cerveza"];
       return cervezas;
     };
 
@@ -989,10 +989,10 @@
       if (msg.length > 8) {
         user = r.lookupUser(msg.substr(8));
         if (user === false) {
-          API.sendChat("/em doesn't see '" + msg.substr(8) + "' in room and eats cookie himself");
+          API.sendChat("/em no ve a  '" + msg.substr(8) + "'en la sala y se la tomo el");
           return false;
         } else {
-          return API.sendChat("@" + user.username + ", @" + this.msgData.from + " te ha dado una " + this.getCookie() + ". Disfrutala!.");
+          return API.sendChat("@" + user.username + ", @" + this.msgData.from + " te ha dado una " + this.getCookie() + ". Disfrutala.");
         }
       }
     };
