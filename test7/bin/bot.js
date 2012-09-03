@@ -988,10 +988,7 @@
       r = new RoomHelper();
       if (msg.length > 8) {
         user = r.lookupUser(msg.substr(8));
-        if (user === false) {
-          API.sendChat("/em no ve a  '" + msg.substr(8) + "'en la sala y se la tomo el");
-          return false;
-        } else {
+        {
           return API.sendChat("@" + user.username + ", @" + this.msgData.from + " te ha dado una " + this.getCerveza() + ". Disfrutala.");
         }
       }
