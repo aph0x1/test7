@@ -871,7 +871,7 @@
     }
 
     punishCommand.prototype.init = function() {
-      this.command = 'torturas';
+      this.command = 'tortura';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'user';
     };
@@ -888,8 +888,8 @@
       var msg, name, r, user;
       msg = this.msgData.message;
       r = new RoomHelper();
-      if (msg.length > 8) {
-        name = msg.substr(8);
+      if (msg.length > 9) {
+        name = msg.substr(9);
         user = r.lookupUser(name);
         if (user === false) {
           API.sendChat("/me punishes @" + this.msgData.from + " for getting the syntax wrong.");
