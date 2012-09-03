@@ -1464,7 +1464,7 @@
     }
 
     forceSkipCommand.prototype.init = function() {
-      this.command = '/forzar';
+      this.command = '/forceskip';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'mod';
     };
@@ -1472,8 +1472,8 @@
     forceSkipCommand.prototype.functionality = function() {
       var msg, param;
       msg = this.msgData.message;
-      if (msg.length > 12) {
-        param = msg.substr(12);
+      if (msg.length > 11) {
+        param = msg.substr(11);
         if (param === 'activar') {
           data.forceSkip = true;
           return API.sendChat("La opción de forzar salto ha sido activada.");
