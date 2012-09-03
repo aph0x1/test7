@@ -918,7 +918,7 @@
 
     cervezaCommand.prototype.getCerveza = function() {
       var c, cervezas;
-      cervezas = ["a chocolate chip cookie", "a sugar cookie", "an oatmeal raisin cookie", "a 'special' brownie", "an animal cracker", "a scooby snack", "a blueberry muffin", "a cupcake"];
+      cervezas = ["a chocolate chip cerveza", "a sugar cerveza", "an oatmeal raisin cerveza", "a 'special' brownie", "an animal cracker", "a scooby snack", "a blueberry muffin", "a cupcake"];
       c = Math.floor(Math.random() * cervezas.length);
       return cervezas[c];
     };
@@ -930,7 +930,7 @@
       if (msg.length > 8) {
         user = r.lookupUser(msg.substr(8));
         if (user === false) {
-          API.sendChat("/em doesn't see '" + msg.substr(8) + "' in room and eats cookie himself");
+          API.sendChat("/em doesn't see '" + msg.substr(8) + "' in room and eats cerveza himself");
           return false;
         } else {
           return API.sendChat("@" + user.username + ", @" + this.msgData.from + " has rewarded you with " + this.getCerveza() + ". Enjoy.");
