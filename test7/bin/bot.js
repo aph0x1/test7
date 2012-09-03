@@ -892,9 +892,9 @@
         name = msg.substr(9);
         user = r.lookupUser(name);
         if (user === false) {
-          API.sendChat("/me punishes @" + this.msgData.from + " for getting the syntax wrong.");
+          API.sendChat("/me tortura @" + this.msgData.from + " por haber cometido un error.");
           return setTimeout(function() {
-            return API.sendChat("Seriously though, I don't recognize the username '" + name + "'");
+            return API.sendChat("No reconozco el nombre de usuario  '" + name + "'");
           }, 750);
         } else {
           if (user.owner) {
@@ -952,9 +952,7 @@
       cMedia = API.getMedia();
       if (_ref = cMedia.author, __indexOf.call(arts, _ref) >= 0) {
         selections['artist'] = cMedia.author;
-      } else {
-        selections['artist'] = chooseRandom(arts);
-      }
+      } 
       msg = "Everyone's heard that " + selections['artist'] + " track! Get new music from http://youtube.com/" + selections['channels'][0] + " http://youtube.com/" + selections['channels'][1] + " or http://youtube.com/" + selections['channels'][2];
       return API.sendChat(msg);
     };
