@@ -1365,10 +1365,10 @@
         } else {
           return data.lockBooth(function() {
             API.moderateRemoveDJ(userRemove.id);
-            API.sendChat("Sacando " + userRemove.username + "...");
+            API.sendChat("Sacando a " + userRemove.username + "...");
             return setTimeout(function() {
               API.moderateAddDJ(userAdd.id);
-              API.sendChat("Agregando " + userAdd.username + "...");
+              API.sendChat("Agregando a " + userAdd.username + "...");
               return setTimeout(function() {
                 return data.unlockBooth();
               }, 1500);
@@ -1393,7 +1393,7 @@
     }
 
     popCommand.prototype.init = function() {
-      this.command = '/pop';
+      this.command = '/ultimo';
       this.parseType = 'exact';
       return this.rankPrivelege = 'mod';
     };
@@ -1418,7 +1418,7 @@
     }
 
     pushCommand.prototype.init = function() {
-      this.command = '/push';
+      this.command = '/poner';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'mod';
     };
@@ -1432,9 +1432,9 @@
         user = r.lookupUser(name);
         if (user !== false) {
           API.moderateAddDJ(user.id);
-          return console.log("Adding User to DJ booth", user);
+          return console.log("Agregando usuario a la cabina", user);
         } else {
-          return console.log("could not find user with name " + name);
+          return console.log("No se encontró el usuario de nombre " + name);
         }
       }
     };
