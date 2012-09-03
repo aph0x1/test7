@@ -1189,7 +1189,7 @@
     }
 
     statusCommand.prototype.init = function() {
-      this.command = '/status';
+      this.command = '/estado';
       this.parseType = 'exact';
       return this.rankPrivelege = 'user';
     };
@@ -1205,8 +1205,8 @@
       min = min < 10 ? '0' + min : min;
       t = data.totalVotingData;
       t['songs'] = data.songCount;
-      launch = 'Initiated ' + month + '/' + day + ' ' + hour + ':' + min + ' ' + meridian + '. ';
-      totals = '' + t.songs + ' songs have been played, accumulating ' + t.woots + ' woots, ' + t.mehs + ' mehs, and ' + t.curates + ' queues.';
+      launch = 'Iniciado el  ' + month + '/' + day + ' ' + hour + ':' + min + ' ' + meridian + '. ';
+      totals = '' + t.songs + ' canciónes han sido tocadas, Acumulando un total de:  ' + t.woots + ' woots, ' + t.mehs + ' mehs, y ' + t.curates + ' queues.';
       msg = launch + totals;
       return API.sendChat(msg);
     };
