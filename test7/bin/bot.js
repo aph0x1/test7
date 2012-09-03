@@ -986,10 +986,10 @@
       var msg, r, user;
       msg = this.msgData.message;
       r = new RoomHelper();
-      if (msg.length > 20) {
-        user = r.lookupUser(msg.substr(20));
+      if (msg.length > 9) {
+        user = r.lookupUser(msg.substr(9));
         if (user === false) {
-          API.sendChat("/em no ve a  '" + msg.substr(20) + "'en la sala y se la tomo el");
+          API.sendChat("/em no ve a  '" + msg.substr(9) + "'en la sala y se la tomo el");
           return false;
         } else {
           return API.sendChat("@" + user.username + ", @" + this.msgData.from + " te ha dado una " + this.getCerveza() + ". Disfrutala.");
