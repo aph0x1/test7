@@ -1464,7 +1464,7 @@
     }
 
     forceSkipCommand.prototype.init = function() {
-      this.command = '/forceskip';
+      this.command = '/forzar';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'mod';
     };
@@ -1474,12 +1474,12 @@
       msg = this.msgData.message;
       if (msg.length > 11) {
         param = msg.substr(11);
-        if (param === 'enable') {
+        if (param === 'activar') {
           data.forceSkip = true;
-          return API.sendChat("Forced skipping enabled.");
-        } else if (param === 'disable') {
+          return API.sendChat("La opción de forzar salto ha sido activada.");
+        } else if (param === 'desactivar') {
           data.forceSkip = false;
-          return API.sendChat("Forced skipping disabled.");
+          return API.sendChat("La opción de forzar salto ha sido desactivada. ");
         }
       }
     };
@@ -1497,7 +1497,7 @@
     }
 
     fbCommand.prototype.init = function() {
-      this.command = '/fb';
+      this.command = '/seguir';
       this.parseType = 'exact';
       return this.rankPrivelege = 'user';
     };
@@ -1505,11 +1505,11 @@
     fbCommand.prototype.functionality = function() {
       var m, msg;
       m = Math.floor(Math.random() * this.msgs.length);
-      msg = this.msgs[m].replace('{fb}', 'http://on.fb.me/HNzK5S');
+      msg = this.msgs[m].replace('{seguir}', 'http://goo.gl/9WBbZ');
       return API.sendChat(msg);
     };
 
-    fbCommand.prototype.msgs = ["Don't have any friends in real life? That's ok, we'll be your friend.  Join our facebook group: {fb}", "Wondering what TIMarbury looks like?  Join our facebook group ({fb}) and find out for yourself!", "We have a facebook group. Join it. Please. {fb}", "The Dubstep Den is now on friendster! lol just kidding.  Here's our facebook group: {fb} you should join.", "I bet you're handsome.  Join our facebook group so me0w can stalk your photos: {fb}"];
+    fbCommand.prototype.msgs = ["Unete a nuestro grupo de FB: {seguir}", "¿Quiéres saber cuando hacemos algun evento? síguenos: ({seguir}) y enterate de todo!"];
 
     return fbCommand;
 
@@ -1524,13 +1524,13 @@
     }
 
     overplayedCommand.prototype.init = function() {
-      this.command = '/overplayed';
+      this.command = '/repetidas';
       this.parseType = 'exact';
       return this.rankPrivelege = 'user';
     };
 
     overplayedCommand.prototype.functionality = function() {
-      return API.sendChat("View the list of songs we consider overplayed and suggest additions at http://den.johnback.us/overplayed_tracks");
+      return API.sendChat("Mira la lista de canciónes que consideramos repetidas: http://www.google.com");
     };
 
     return overplayedCommand;
