@@ -971,7 +971,7 @@
     roomHelpCommand.prototype.functionality = function() {
       var msg1, msg2;
       msg1 = "Bienvenido a Latin Force!, Crea una lista de reproducción y agrega música ya sea de Youtube como de Soundcloud  ";
-      msg1 += "Dale click al botón 'Join Waitlist' y espera tu turno para tocar. Para saber que tocar escribe'/géneros' por más especificaciónes.";
+      msg1 += "Dale click al botón 'Join Waitlist' y espera tu turno para tocar. Para saber que tocar escribe '/géneros' para más especificaciónes.";
       API.sendChat(msg1);
       return setTimeout((function() {
         return API.sendChat(msg2);
@@ -1088,7 +1088,7 @@
       return API.sendChat(this.smoke());
     };
 
-    smokeCommand.prototype.responses = ["¿Para que beber y conducir, si puedes fumar y volar? yeah!", "/me Dejame armarte el cigarro compañero!", "Ohhhh veo colores!!! colores!!!! los coloreeeeees", "Cof Cof Cof!!", "Todo esta bien..... amor y paz"];
+    smokeCommand.prototype.responses = ["/me ¿Para que beber y conducir, si puedes fumar y volar? yeah!", "/me Dejame armarte el cigarro compañero!", "/me Ohhhh veo colores!!! colores!!!! los coloreeeeees", "/me Cof Cof Cof!!", "/me Todo esta bien..... amor y paz"];
 
     return smokeCommand;
 
@@ -1794,7 +1794,7 @@
   };
 
   announceCurate = function(obj) {
-    return API.sendChat("/em: " + obj.user.username + " loves this song!");
+    return API.sendChat("/em: A " + obj.user.username + " Le gusta esta canción!");
   };
 
   updateDjs = function(obj) {
@@ -1807,7 +1807,7 @@
     data.userJoin(user);
     data.users[user.id].updateActivity();
     console.log(user.username + " joined the room");
-    return API.sendChat("/em: " + user.username + " has joined the Den.");
+    return API.sendChat("/em: " + user.username + " Ha ingresado a la sala.");
   };
 
   handleNewSong = function(obj) {
@@ -1816,12 +1816,9 @@
     if (data.currentsong === null) {
       data.newSong();
     } else {
-      API.sendChat("/em: Hemos escuchado " + data.currentsong.title + " de " + data.currentsong.author + ". Estadísticas: Woots: " + data.currentwoots + ", Mehs: " + data.currentmehs + ", Me Gusta: " + data.currentcurates + ".");
+      API.sendChat("/em: Hemos escuchado " + data.currentsong.title + " por " + data.currentsong.author + ". Estadísticas: Woots: " + data.currentwoots + ", Mehs: " + data.currentmehs + ", Me Gusta: " + data.currentcurates + ".");
       data.newSong();
       document.getElementById("button-vote-positive").click();
-      if ((data.currentsong.author.indexOf("Skrillex") !== -1) || (data.currentsong.title.indexOf("Skrillex") !== -1)) {
-        API.sendChat("YO SKRILL DROP IT HARD!");
-      }
     }
     if (data.forceSkip) {
       songId = obj.media.id;
