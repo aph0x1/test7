@@ -976,7 +976,7 @@
       return this.rankPrivelege = 'mod';
     };
 
-    cervezaCommand.prototype.getCookie = function() {
+    cervezaCommand.prototype.getCerveza = function() {
       var cervezas;
       cervezas = ["rica y deliciosa cerveza"];
       return cervezas;
@@ -992,7 +992,7 @@
           API.sendChat("/em no ve a  '" + msg.substr(8) + "'en la sala y se la tomo el");
           return false;
         } else {
-          return API.sendChat("@" + user.username + ", @" + this.msgData.from + " te ha dado una " + this.getCookie() + ". Disfrutala.");
+          return API.sendChat("@" + user.username + ", @" + this.msgData.from + " te ha dado una " + this.getCerveza() + ". Disfrutala.");
         }
       }
     };
