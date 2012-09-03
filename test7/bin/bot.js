@@ -727,14 +727,8 @@
           case "/download":
             resp = "Provides a link to find downloads of mp3 of current song";
             break;
-          case "/smokesesh":
-            resp = "For when ya just wanna get high";
-            break;
           case "/smoke":
             resp = "doobies";
-            break;
-          case "/dab":
-            resp = "WOLVES uses this";
             break;
           case "/afks":
             resp = "List current DJs on deck that haven't chatted or voted in 5+ minutes";
@@ -1079,7 +1073,7 @@
     }
 
     smokeCommand.prototype.init = function() {
-      this.command = ['/smokesesh', '/smoke', '/dab'];
+      this.command = ['/fumar'];
       this.parseType = 'exact';
       return this.rankPrivelege = 'user';
     };
@@ -1094,7 +1088,7 @@
       return API.sendChat(this.smoke());
     };
 
-    smokeCommand.prototype.responses = ["If we all had a bong we'd all get along.", "/me rolls a joint for you.", "Got anything to eat?", "Y-y-you're crazy....", "THE COLORS. THE FUCKIN COLORS!", "Everyone needs to give me a hug.", "Need to blaze til' my eyes glaze."];
+    smokeCommand.prototype.responses = ["¿Para que beber y conducir, si puedes fumar y volar? yeah!", "/me Dejame armarte el cigarro compañero!", "Ohhhh veo colores!!! colores!!!! los coloreeeeees", "Cof Cof Cof!!", "Todo esta bien..... amor y paz"];
 
     return smokeCommand;
 
