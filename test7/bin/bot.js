@@ -1627,8 +1627,8 @@
     disconnectLookupCommand.prototype.functionality = function() {
       var cmd, dcHour, dcLookupId, dcMeridian, dcMins, dcSongsAgo, dcTimeStr, dcUser, disconnectInstances, givenName, id, recentDisconnect, resp, u, _i, _len, _ref, _ref1;
       cmd = this.msgData.message;
-      if (cmd.length > 10) {
-        givenName = cmd.slice(10);
+      if (cmd.length > 5) {
+        givenName = cmd.slice(5);
         _ref = data.users;
         for (id in _ref) {
           u = _ref[id];
