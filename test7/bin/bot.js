@@ -1302,11 +1302,10 @@
     lockCommand.prototype.init = function() {
       this.command = '/lock';
       this.parseType = 'exact';
-      return this.rankPrivelege = 'mod','host';
+      return this.rankPrivelege = 'mod';
     };
 
     lockCommand.prototype.functionality = function() {
-      API.sendChat('Pop and lock dat ish');
       return data.lockBooth();
     };
 
@@ -1329,7 +1328,6 @@
     };
 
     unlockCommand.prototype.functionality = function() {
-      API.sendChat('You\'ll never get the key to unlock my heart');
       return data.unlockBooth();
     };
 
