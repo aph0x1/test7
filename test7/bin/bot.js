@@ -1618,7 +1618,7 @@
       var msg, name, r, u, votes;
       r = new RoomHelper();
       msg = this.msgData.message;
-      if (msg.length === 10) {
+      if (msg.length === 12) {
         return console.log("bitches want room ratio");
       } else if (msg.length > 12) {
         name = msg.substr(12);
