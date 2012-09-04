@@ -688,8 +688,8 @@
       var msg, param, resp;
       msg = this.msgData.message;
       resp = '';
-      if (msg.length > 9) {
-        param = msg.substring(9);
+      if (msg.length > 10) {
+        param = msg.substring(10);
         switch (param) {
           case "cerveza":
             resp = "Mod only command.  Reward a user with a sweet treat!  Syntax: cerveza @user";
@@ -767,7 +767,7 @@
             resp = "That is nothing.  That is not a thing.";
         }
       } else {
-        resp = "Utiliza este comando para saber usar otros comandos.  La sintaxis es /cmdayuda + [el comando]";
+        resp = "Utiliza este comando para saber usar otros comandos.  La sintaxis /cmdhelp [/CMD]";
       }
       return API.sendChat(resp);
     };
