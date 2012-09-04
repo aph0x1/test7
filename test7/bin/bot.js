@@ -448,7 +448,7 @@
           secsLastActive = timeSinceLastActivity / 1000;
           if (user.getWarningCount() === 0) {
             user.warn();
-            _results.push(API.sendChat("@" + user.getUser().username + ", I haven't seen you chat or vote in at least 12 minutes. Are you AFK?  If you don't show activity in 2 minutes I will remove you."));
+            _results.push(API.sendChat("@" + user.getUser().username + ", No te he visto chatear ni votar en los últimos 12 minutos. Estás AFK?  Si no muestras actividad en 2 minutos, tendré que sacarte."));
           } else if (user.getWarningCount() === 1) {
             lastWarned = user.getLastWarning();
             timeSinceLastWarning = now.getTime() - lastWarned.getTime();
@@ -456,7 +456,7 @@
             if (timeSinceLastWarning > twoMinutes) {
               user.warn();
               warnMsg = "@" + user.getUser().username;
-              warnMsg += ", I haven't seen you chat or vote in at least 14 minutes now.  This is your second and FINAL warning.  If you do not chat or vote in the next minute I will remove you.";
+              warnMsg += ", No te he visto chatear ni votar en los últimos 14 minutos. Estás AFK?  Si no muestras actividad en 2 minutos, tendré que sacarte.";
               _results.push(API.sendChat(warnMsg));
             } else {
               _results.push(void 0);
@@ -468,7 +468,7 @@
             if (timeSinceLastWarning > oneMinute) {
               DJs = API.getDJs();
               if (DJs.length > 0 && DJs[0].id !== user.getUser().id) {
-                API.sendChat("@" + user.getUser().username + ", you had 2 warnings. Please stay active by chatting or voting.");
+                API.sendChat("@" + user.getUser().username + ", Ya tiénes dos advertencias. Por favor, mantente activo chateando o votando.");
                 API.moderateRemoveDJ(id);
                 _results.push(user.warn());
               } else {
@@ -478,7 +478,7 @@
               _results.push(void 0);
             }
           } else if (user.getWarningCount() >= 3) {
-            _results.push(console.log("Have already attempted removing " + user.getUser().username + " but they are still on deck."));
+            _results.push(console.log("Ya se ha intentado removerte " + user.getUser().username + " pero aun sigue en cubierta"));
           } else {
             _results.push(void 0);
           }
@@ -679,7 +679,7 @@
     }
 
     cmdHelpCommand.prototype.init = function() {
-      this.command = '/cmdhelp';
+      this.command = '/cmdayuda';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'user';
     };
@@ -697,26 +697,11 @@
           case "tortura":
             resp = "Mod only command.  Punish a user in one of several methods.  For naughty users.  Syntax: punish @user";
             break;
-          case "/whywoot":
-            resp = "DJ all day without throwing your life away clicking woot every 3 minutes.  Learn how and get the necessary tools";
-            break;
-          case "/theme":
+          case "/generos":
             resp = "Learn what genres of music are generally accepted here.  Don't forget to check if your song is in /overplayed though";
             break;
-          case "/rules":
+          case "/reglas":
             resp = "Room rules.  Duh";
-            break;
-          case "/roomhelp":
-            resp = "Information about the room for the newer folk.";
-            break;
-          case "/source":
-            resp = "About the bot and the code that produced it";
-            break;
-          case "/sourcecode":
-            resp = "About the bot and the code that produced it";
-            break;
-          case "/author":
-            resp = "About the bot and the code that produced it";
             break;
           case "/woot":
             resp = "Remind users to hit woot so they don't get removed.  either type /woot or /woot @user";
@@ -724,10 +709,10 @@
           case "/malacalidad":
             resp = "Mod only command. Flags songs that are bad quality.";
             break;
-          case "/download":
+          case "/descargar":
             resp = "Provides a link to find downloads of mp3 of current song";
             break;
-          case "/smoke":
+          case "/fumar":
             resp = "doobies";
             break;
           case "/afks":
@@ -736,7 +721,7 @@
           case "/allafks":
             resp = "List all users in room that haven't chatted or voted in 10+ minutes";
             break;
-          case "/status":
+          case "/estado":
             resp = "Uptime and total song stats";
             break;
           case "/unhook events all":
@@ -744,9 +729,6 @@
             break;
           case "/die":
             resp = "Host only command. Makes bot go bye bye";
-            break;
-          case "/reload":
-            resp = "Host only command. Reload pup's script";
             break;
           case "/lock":
             resp = "Mod only command. Locks booth";
@@ -757,10 +739,7 @@
           case "/overplayed":
             resp = "Links users to our overplayed song list";
             break;
-          case "/whymeh":
-            resp = "Explains to users why they should be mehing every song";
-            break;
-          case "/skip":
+          case "/saltar":
             resp = "Mod only command.  Skips song.  Works for skipping invisible DJs.";
             break;
           case "/resetafk":
@@ -769,32 +748,26 @@
           case "/forceskip":
             resp = "Host only command.  Make pup skip songs when they are supposed to end (addresses triangles of death issue). Syntax: /forceskip [enable|disable]";
             break;
-          case "/fb":
+          case "/seguir":
             resp = "Links to Dubstep Den's facebook page";
-            break;
-          case "/uservoice":
-            resp = "Links to Dubstep Den's uservoice page";
             break;
           case "/dclookup":
             resp = "Mod only command.  Looks up user for a log of their last disconnect. Syntax: /dclookup @USER";
             break;
-          case "/reminder":
-            resp = "Mod only command.  Set reminder for x songs from now.  For users that dc'd mainly.  Syntax: /reminder \"MSG\" [numsongs]";
-            break;
-          case "/voteratio":
+          case "/estadisticas":
             resp = "Mod only command.  See woot & meh count for user since bot launch.  Syntax: /voteratio @USER";
             break;
           case "/avgvoteratio":
             resp = "Mod only command.  See average voting ratio of every present user in room. Syntax: /avgvoteratio";
             break;
-          case "/cmdhelp":
+          case "/cmdayuda":
             resp = "Looks like you got it down";
             break;
-          case "/pop":
+          case "/ultimo":
             resp = "Mod only command.  Removes last person on deck";
             break;
-          case "/push":
-            resp = "Mod only command.  Puts user on deck. Syntax: /push @user";
+          case "/poner":
+            resp = "Mod only command.  Puts user on deck. Syntax: /poner @user";
             break;
           default:
             resp = "That is nothing.  That is not a thing.";
@@ -1121,7 +1094,7 @@
         }
       }
       if (msg === '') {
-        return API.sendChat("No one is AFK");
+        return API.sendChat("Nadie está AFK");
       } else {
         return API.sendChat('AFKs: ' + msg);
       }
@@ -1161,7 +1134,7 @@
         }
       }
       if (msg === '') {
-        return API.sendChat("No one is AFK");
+        return API.sendChat("Nadie está AFK");
       } else {
         return API.sendChat('AFKs: ' + msg);
       }
@@ -1636,7 +1609,7 @@
     }
 
     voteRatioCommand.prototype.init = function() {
-      this.command = '/voteratio';
+      this.command = '/estadisticas';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'mod';
     };
@@ -1653,26 +1626,24 @@
         if (u !== false) {
           votes = r.userVoteRatio(u);
           console.log(u.username + ' votes:', votes);
-          msg = u.username + " has wooted " + votes['woot'].toString() + " time";
+          msg = u.username + " ha dado woot" + votes['woot'].toString() + " time";
           if (votes['woot'] === 1) {
             msg += ', ';
           } else {
             msg += 's, ';
           }
-          msg += "and meh'd " + votes['meh'].toString() + " time";
+          msg += "y meh " + votes['meh'].toString() + " veces";
           if (votes['meh'] === 1) {
             msg += '. ';
           } else {
             msg += 's. ';
           }
-          msg += "Their woot:vote ratio is " + votes['positiveRatio'].toString() + ".";
+          msg += "Su promedio de votación es: " + votes['positiveRatio'].toString() + ".";
           return API.sendChat(msg);
         } else {
-          return API.sendChat("I don't recognize a user named '" + name + "'");
+          return API.sendChat("No reconozco a el usuario llamado '" + name + "'");
         }
-      } else {
-        return API.sendChat("I'm not sure what you want from me...");
-      }
+      } 
     };
 
     return voteRatioCommand;
