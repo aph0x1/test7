@@ -651,8 +651,8 @@
     protectCommand.prototype.functionality = function() {
       var id, msg, user, username, _ref;
       msg = this.msgData.message;
-      if (msg.length > 10) {
-        username = msg.substring(10);
+      if (msg.length > 11) {
+        username = msg.substring(11);
         _ref = data.users;
         for (id in _ref) {
           user = _ref[id];
