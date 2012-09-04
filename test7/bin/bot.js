@@ -767,7 +767,7 @@
             resp = "That is nothing.  That is not a thing.";
         }
       } else {
-        resp = "Use this command to learn how use other commands.  Syntax: /cmdhelp [/CMD]";
+        resp = "Utiliza este comando para saber usar otros comandos.  La sintaxis es /cmdayuda + [el comando]";
       }
       return API.sendChat(resp);
     };
