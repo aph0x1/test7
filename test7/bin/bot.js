@@ -1,5 +1,5 @@
 (function() {
-  var Command, RoomHelper, User, afkCheck, afksCommand, allAfksCommand, announceCurate, antispam, apiHooks, badQualityCommand, beggar, chatCommandDispatcher, chatUniversals, cmdHelpCommand, cmds, cervezaCommand, data, dieCommand, disconnectLookupCommand, downloadCommand, fbCommand, forceSkipCommand, handleNewSong, handleUserJoin, handleUserLeave, handleVote, hook, initEnvironment, initHooks, initialize, lockCommand, msToStr, overplayedCommand, popCommand, populateUserData, protectCommand, punishCommand, pupOnline, pushCommand, resetAfkCommand, roomHelpCommand, rulesCommand, settings, skipCommand, smokeCommand, statusCommand, swapCommand, themeCommand, undoHooks, unhook, unhookCommand, unlockCommand, updateDjs, updateVotes, wootCommand,
+  var Command, RoomHelper, User, afkCheck, announceCurate, antispam, apiHooks, badQualityCommand, beggar, chatCommandDispatcher, chatUniversals, cmdHelpCommand, cmds, cervezaCommand, data, dieCommand, disconnectLookupCommand, downloadCommand, fbCommand, forceSkipCommand, handleNewSong, handleUserJoin, handleUserLeave, handleVote, hook, initEnvironment, initHooks, initialize, lockCommand, msToStr, overplayedCommand, popCommand, populateUserData, protectCommand, punishCommand, pupOnline, pushCommand, resetAfkCommand, roomHelpCommand, rulesCommand, settings, skipCommand, smokeCommand, statusCommand, swapCommand, themeCommand, undoHooks, unhook, unhookCommand, unlockCommand, updateDjs, updateVotes, wootCommand,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
     __hasProp = {}.hasOwnProperty,
@@ -713,12 +713,6 @@
           case "/fumar":
             resp = "Comando para los fumadores de la sala.";
             break;
-          case "/afks":
-            resp = "List current DJs on deck that haven't chatted or voted in 5+ minutes";
-            break;
-          case "/allafks":
-            resp = "List all users in room that haven't chatted or voted in 10+ minutes";
-            break;
           case "/estado":
             resp = "Cuando se inicio el bot y estadísticas de las canciónes tocadas.";
             break;
@@ -1085,85 +1079,8 @@
 
   })(Command);
 
-  afksCommand = (function(_super) {
+  
 
-    __extends(afksCommand, _super);
-
-    function afksCommand() {
-      return afksCommand.__super__.constructor.apply(this, arguments);
-    }
-
-    afksCommand.prototype.init = function() {
-      this.command = '/afks';
-      this.parseType = 'exact';
-      return this.rankPrivelege = 'user';
-    };
-
-    afksCommand.prototype.functionality = function() {
-      var dj, djAfk, djs, msg, now, _i, _len;
-      msg = '';
-      djs = API.getDJs();
-      for (_i = 0, _len = djs.length; _i < _len; _i++) {
-        dj = djs[_i];
-        now = new Date();
-        djAfk = now.getTime() - data.users[dj.id].getLastActivity().getTime();
-        if (djAfk > (5 * 60 * 1000)) {
-          if (msToStr(djAfk) !== false) {
-            msg += dj.username + ' - ' + msToStr(djAfk);
-            msg += '. ';
-          }
-        }
-      }
-      if (msg === '') {
-        return API.sendChat("Nadie está AFK");
-      } else {
-        return API.sendChat('AFKs: ' + msg);
-      }
-    };
-
-    return afksCommand;
-
-  })(Command);
-
-  allAfksCommand = (function(_super) {
-
-    __extends(allAfksCommand, _super);
-
-    function allAfksCommand() {
-      return allAfksCommand.__super__.constructor.apply(this, arguments);
-    }
-
-    allAfksCommand.prototype.init = function() {
-      this.command = '/allafks';
-      this.parseType = 'exact';
-      return this.rankPrivelege = 'user';
-    };
-
-    allAfksCommand.prototype.functionality = function() {
-      var msg, now, u, uAfk, usrs, _i, _len;
-      msg = '';
-      usrs = API.getUsers();
-      for (_i = 0, _len = usrs.length; _i < _len; _i++) {
-        u = usrs[_i];
-        now = new Date();
-        uAfk = now.getTime() - data.users[u.id].getLastActivity().getTime();
-        if (uAfk > (10 * 60 * 1000)) {
-          if (msToStr(uAfk) !== false) {
-            msg += u.username + ' - ' + msToStr(uAfk);
-            msg += '. ';
-          }
-        }
-      }
-      if (msg === '') {
-        return API.sendChat("Nadie está AFK");
-      } else {
-        return API.sendChat('AFKs: ' + msg);
-      }
-    };
-
-    return allAfksCommand;
-
-  })(Command);
 
   statusCommand = (function(_super) {
 
@@ -1622,7 +1539,7 @@
   })(Command);
 
 
-  cmds = [cervezaCommand, punishCommand, themeCommand, rulesCommand, roomHelpCommand, wootCommand, comandosCommand, badQualityCommand, downloadCommand, smokeCommand, afksCommand, allAfksCommand, statusCommand, unhookCommand, dieCommand, lockCommand, unlockCommand, swapCommand, popCommand, pushCommand, overplayedCommand, skipCommand, resetAfkCommand, forceSkipCommand, fbCommand, cmdHelpCommand, protectCommand, disconnectLookupCommand];
+  cmds = [cervezaCommand, punishCommand, themeCommand, rulesCommand, roomHelpCommand, wootCommand, comandosCommand, badQualityCommand, downloadCommand, smokeCommand, statusCommand, unhookCommand, dieCommand, lockCommand, unlockCommand, swapCommand, popCommand, pushCommand, overplayedCommand, skipCommand, resetAfkCommand, forceSkipCommand, fbCommand, cmdHelpCommand, protectCommand, disconnectLookupCommand];
 
   chatCommandDispatcher = function(chat) {
     var c, cmd, _i, _len, _results;
