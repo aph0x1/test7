@@ -658,7 +658,7 @@
           user = _ref[id];
           if (user.getUser().username === username) {
             user["protected"] = true;
-            API.sendChat("Yo te protegeré @" + username);
+            API.sendChat("Yo te protegeré @" + username + " (Solo no te puedo sacar)");
             return;
           }
         }
