@@ -1,43 +1,3 @@
-
-
-API.addEventListener(API.USER.CHAT, data);
-function f_comandos(data) {
-        API.sendChat('Comandos del chat: ');
-        window.setTimeout(function(){API.sendChat('ayuda | reco | seguir | esverdad | chistes | generos | bailar | tomar | cerveza | whisky | tequila | vodka | champagne | ron');}, 500);
-}
-
-
-var o_chatcmds = {
-        '/comandos': {
-                f: f_comandos,
-                needsPerm: false
-        },
-};
-
-API.addEventListener(API.CHAT, f_checkChat);
-function f_checkChat(data) {
-        if((data.type == "message") && (data.fromID != API.getSelf().id)) {
-                for(var s in o_chatcmds) {
-                        if(data.message.toString().indexOf(s) != -1) { // dont parse our own messages
-                                // finally, perm check
-                                if(o_chatcmds[s].needsPerm)
-                                {
-                                        if(API.getUser(data.fromID).moderator) {
-                                                o_chatcmds[s].f(data);
-                                        } else {
-                                                API.sendChat('@'+data.from+': No tienes los permisos suficientes para utilizar este comando');
-                                        }
-                                } else {
-                                        o_chatcmds[s].f(data);
-                                }
-                                
-                        }
-                }
-               
-        }
-}
-
-
 (function() {
   var Command, RoomHelper, User, afkCheck, afksCommand, allAfksCommand, announceCurate, antispam, apiHooks, badQualityCommand, beggar, chatCommandDispatcher, chatUniversals, cmdHelpCommand, cmds, cervezaCommand, data, dieCommand, disconnectLookupCommand, downloadCommand, fbCommand, forceSkipCommand, handleNewSong, handleUserJoin, handleUserLeave, handleVote, hook, initEnvironment, initHooks, initialize, lockCommand, msToStr, overplayedCommand, popCommand, populateUserData, protectCommand, punishCommand, pupOnline, pushCommand, resetAfkCommand, roomHelpCommand, rulesCommand, settings, skipCommand, smokeCommand, statusCommand, swapCommand, themeCommand, undoHooks, unhook, unhookCommand, unlockCommand, updateDjs, updateVotes, wootCommand,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
@@ -1013,6 +973,35 @@ function f_checkChat(data) {
 
   })(Command);
 
+
+    comandosCommand = (function(_super) {
+
+    __extends(comandosCommand, _super);
+
+    function comandosCommand() {
+      return comandosCommand.__super__.constructor.apply(this, arguments);
+    }
+
+    comandosCommand.prototype.init = function() {
+      this.command = '/comandos';
+      this.parseType = 'startsWith';
+      return this.rankPrivelege = 'user';
+    };
+
+    comandosCommand.prototype.functionality = function() {
+      var msg, nameIndex;
+      msg = "ayuda | reco | seguir | esverdad | chistes | generos | bailar | tomar | cerveza | whisky | tequila | vodka | champagne | ron";
+      if ((nameIndex = this.msgData.message.indexOf('@')) !== -1) {
+        return API.sendChat(this.msgData.message.substr(nameIndex) + ', ' + msg);
+      } else {
+        return API.sendChat(msg);
+      }
+    };
+
+    return comandosCommand;
+
+  })(Command);
+
   badQualityCommand = (function(_super) {
 
     __extends(badQualityCommand, _super);
@@ -1633,7 +1622,7 @@ function f_checkChat(data) {
   })(Command);
 
 
-  cmds = [cervezaCommand, punishCommand, themeCommand, rulesCommand, roomHelpCommand, wootCommand, badQualityCommand, downloadCommand, smokeCommand, afksCommand, allAfksCommand, statusCommand, unhookCommand, dieCommand, lockCommand, unlockCommand, swapCommand, popCommand, pushCommand, overplayedCommand, skipCommand, resetAfkCommand, forceSkipCommand, fbCommand, cmdHelpCommand, protectCommand, disconnectLookupCommand];
+  cmds = [cervezaCommand, punishCommand, themeCommand, rulesCommand, roomHelpCommand, wootCommand, comandosCommand, badQualityCommand, downloadCommand, smokeCommand, afksCommand, allAfksCommand, statusCommand, unhookCommand, dieCommand, lockCommand, unlockCommand, swapCommand, popCommand, pushCommand, overplayedCommand, skipCommand, resetAfkCommand, forceSkipCommand, fbCommand, cmdHelpCommand, protectCommand, disconnectLookupCommand];
 
   chatCommandDispatcher = function(chat) {
     var c, cmd, _i, _len, _results;
