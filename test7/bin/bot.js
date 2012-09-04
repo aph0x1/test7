@@ -691,10 +691,10 @@
       if (msg.length > 9) {
         param = msg.substring(9);
         switch (param) {
-          case "cerveza":
+          case "cerveza,":
             resp = "Mod only command.  Reward a user with a sweet treat!  Syntax: cerveza @user";
             break;
-          case "tortura":
+          case "tortura,":
             resp = "Mod only command.  Punish a user in one of several methods.  For naughty users.  Syntax: punish @user";
             break;
           case "/whywoot":
