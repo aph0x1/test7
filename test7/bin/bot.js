@@ -643,7 +643,7 @@
     }
 
     protectCommand.prototype.init = function() {
-      this.command = '/protect';
+      this.command = '/proteger';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'mod';
     };
@@ -658,12 +658,12 @@
           user = _ref[id];
           if (user.getUser().username === username) {
             user["protected"] = true;
-            API.sendChat("I shall protect you @" + username + " (I just wont kick you)");
+            API.sendChat("Yo te protegeré @" + username);
             return;
           }
         }
       }
-      API.sendChat("That aint no name I ever did see");
+      API.sendChat("Ese nombre no lo he visto");
     };
 
     return protectCommand;
