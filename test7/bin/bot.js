@@ -1620,8 +1620,8 @@
       msg = this.msgData.message;
       if (msg.length === 10) {
         return console.log("bitches want room ratio");
-      } else if (msg.length > 12) {
-        name = msg.substr(12);
+      } else if (msg.length > 10) {
+        name = msg.substr(10);
         u = r.lookupUser(name);
         if (u !== false) {
           votes = r.userVoteRatio(u);
