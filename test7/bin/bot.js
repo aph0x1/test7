@@ -1618,10 +1618,10 @@
       var msg, name, r, u, votes;
       r = new RoomHelper();
       msg = this.msgData.message;
-      if (msg.length === 10) {
+      if (msg.length === 13) {
         return console.log("bitches want room ratio");
-      } else if (msg.length > 10) {
-        name = msg.substr(10);
+      } else if (msg.length > 13) {
+        name = msg.substr(13);
         u = r.lookupUser(name);
         if (u !== false) {
           votes = r.userVoteRatio(u);
