@@ -1769,7 +1769,7 @@
 
   })(Command);
 
-  cmds = [/cervezaCommand, punishCommand, themeCommand, rulesCommand, roomHelpCommand, wootCommand, badQualityCommand, downloadCommand, smokeCommand, afksCommand, allAfksCommand, statusCommand, unhookCommand, dieCommand, lockCommand, unlockCommand, swapCommand, popCommand, pushCommand, overplayedCommand, skipCommand, commandsCommand, resetAfkCommand, forceSkipCommand, fbCommand, cmdHelpCommand, protectCommand, disconnectLookupCommand, voteRatioCommand, avgVoteRatioCommand];
+  cmds = [cervezaCommand, punishCommand, themeCommand, rulesCommand, roomHelpCommand, wootCommand, badQualityCommand, downloadCommand, smokeCommand, afksCommand, allAfksCommand, statusCommand, unhookCommand, dieCommand, lockCommand, unlockCommand, swapCommand, popCommand, pushCommand, overplayedCommand, skipCommand, commandsCommand, resetAfkCommand, forceSkipCommand, fbCommand, cmdHelpCommand, protectCommand, disconnectLookupCommand, voteRatioCommand, avgVoteRatioCommand];
 
   chatCommandDispatcher = function(chat) {
     var c, cmd, _i, _len, _results;
