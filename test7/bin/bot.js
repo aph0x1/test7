@@ -691,10 +691,10 @@
       if (msg.length > 9) {
         param = msg.substring(9);
         switch (param) {
-          case "cerveza,":
+          case "cerveza":
             resp = "Mod only command.  Reward a user with a sweet treat!  Syntax: cerveza @user";
             break;
-          case "tortura,":
+          case "tortura":
             resp = "Mod only command.  Punish a user in one of several methods.  For naughty users.  Syntax: punish @user";
             break;
           case "/whywoot":
@@ -1769,7 +1769,7 @@
 
   })(Command);
 
-  cmds = [cervezaCommand, punishCommand, themeCommand, rulesCommand, roomHelpCommand, wootCommand, badQualityCommand, downloadCommand, smokeCommand, afksCommand, allAfksCommand, statusCommand, unhookCommand, dieCommand, lockCommand, unlockCommand, swapCommand, popCommand, pushCommand, overplayedCommand, skipCommand, commandsCommand, resetAfkCommand, forceSkipCommand, fbCommand, cmdHelpCommand, protectCommand, disconnectLookupCommand, voteRatioCommand, avgVoteRatioCommand];
+  cmds = [/cervezaCommand, punishCommand, themeCommand, rulesCommand, roomHelpCommand, wootCommand, badQualityCommand, downloadCommand, smokeCommand, afksCommand, allAfksCommand, statusCommand, unhookCommand, dieCommand, lockCommand, unlockCommand, swapCommand, popCommand, pushCommand, overplayedCommand, skipCommand, commandsCommand, resetAfkCommand, forceSkipCommand, fbCommand, cmdHelpCommand, protectCommand, disconnectLookupCommand, voteRatioCommand, avgVoteRatioCommand];
 
   chatCommandDispatcher = function(chat) {
     var c, cmd, _i, _len, _results;
