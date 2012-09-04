@@ -1,4 +1,6 @@
 
+
+API.addEventListener(API.USER.CHAT, data);
 function f_comandos(data) {
         API.sendChat('Comandos del chat: ');
         window.setTimeout(function(){API.sendChat('ayuda | reco | seguir | esverdad | chistes | generos | bailar | tomar | cerveza | whisky | tequila | vodka | champagne | ron');}, 500);
