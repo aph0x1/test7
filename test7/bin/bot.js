@@ -692,28 +692,28 @@
         param = msg.substring(10);
         switch (param) {
           case "cerveza":
-            resp = "Mod only command.  Reward a user with a sweet treat!  Syntax: cerveza @user";
+            resp = "Dale una cerveza a otra persona dentro de la sala  Sintaxis: cerveza @usuario";
             break;
           case "tortura":
-            resp = "Mod only command.  Punish a user in one of several methods.  For naughty users.  Syntax: punish @user";
+            resp = "Castiga a otro usuario con diferentes metodologías. Sintaxis: tortura @usuario";
             break;
           case "/generos":
-            resp = "Learn what genres of music are generally accepted here.  Don't forget to check if your song is in /overplayed though";
+            resp = "Mira cuáles géneros son aceptables en la sala. No olvides cuáles canciónes ya consideramos /repetidas";
             break;
           case "/reglas":
-            resp = "Room rules.  Duh";
+            resp = "Reglas de la sala";
             break;
           case "/woot":
-            resp = "Remind users to hit woot so they don't get removed.  either type /woot or /woot @user";
+            resp = "Hace un recordatorio a los usuarios sobre darle woot. Funciona escibiendo /woot o /woot @usuario";
             break;
           case "/malacalidad":
-            resp = "Mod only command. Flags songs that are bad quality.";
+            resp = "Comando solo para Mod. Saca canciónes que son de malada calidad";
             break;
           case "/descargar":
-            resp = "Provides a link to find downloads of mp3 of current song";
+            resp = "Nos envia un link para bajar la canción que estamos escuchando.";
             break;
           case "/fumar":
-            resp = "doobies";
+            resp = "Comando para los fumadores de la sala";
             break;
           case "/afks":
             resp = "List current DJs on deck that haven't chatted or voted in 5+ minutes";
@@ -722,7 +722,7 @@
             resp = "List all users in room that haven't chatted or voted in 10+ minutes";
             break;
           case "/estado":
-            resp = "Uptime and total song stats";
+            resp = "Cuando se inicio el bot y estadísticas de las canciónes tocadas.";
             break;
           case "/unhook events all":
             resp = "Host only command.  It's complicated";
@@ -730,17 +730,17 @@
           case "/die":
             resp = "Host only command. Makes bot go bye bye";
             break;
-          case "/lock":
-            resp = "Mod only command. Locks booth";
+          case "/bloq":
+            resp = "Comando solo para Mod. Bloquea la cubierta";
             break;
-          case "/unlock":
-            resp = "Mod only command. Unlocks booth";
+          case "/desbloq":
+            resp = "Comando solo para Mod. Desbloquea la cubierta";
             break;
-          case "/overplayed":
-            resp = "Links users to our overplayed song list";
+          case "/repetidas":
+            resp = "Lista de las canciónes más repetidas en la sala.";
             break;
           case "/saltar":
-            resp = "Mod only command.  Skips song.  Works for skipping invisible DJs.";
+            resp = "Comando solo para Mod.  Comando para realizar el salto de djs";
             break;
           case "/resetafk":
             resp = "Mod only command.  Resets AFK timer for user.  Syntax: /resetafk @USER";
@@ -749,25 +749,25 @@
             resp = "Host only command.  Make pup skip songs when they are supposed to end (addresses triangles of death issue). Syntax: /forceskip [enable|disable]";
             break;
           case "/seguir":
-            resp = "Links to Dubstep Den's facebook page";
+            resp = "Link de nuestra página de facebook";
             break;
           case "/dclookup":
             resp = "Mod only command.  Looks up user for a log of their last disconnect. Syntax: /dclookup @USER";
             break;
           case "/cmdayuda":
-            resp = "Looks like you got it down";
+            resp = "Ayuda sobre la utilización de los comandos.";
             break;
           case "/ultimo":
-            resp = "Mod only command.  Removes last person on deck";
+            resp = "Comando solo para Mod.  Saca el último dj de la cubierta";
             break;
           case "/poner":
-            resp = "Mod only command.  Puts user on deck. Syntax: /poner @user";
+            resp = "Comando solo para Mod.  Coloca a alguien en la cubierta. Sintaxis: /poner @usuario";
             break;
           default:
-            resp = "That is nothing.  That is not a thing.";
+            resp = "Ese comando no existe";
         }
       } else {
-        resp = "Utiliza este comando para saber usar otros comandos.  La sintaxis /cmdhelp [/CMD]";
+        resp = "Utiliza este comando para saber usar otros comandos.  La sintaxis /cmdhelp + [/comando]";
       }
       return API.sendChat(resp);
     };
