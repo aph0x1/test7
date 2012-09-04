@@ -1618,7 +1618,7 @@
       var msg, name, r, u, votes;
       r = new RoomHelper();
       msg = this.msgData.message;
-      if (msg.length === 12) {
+      if (msg.length === 10) {
         return console.log("bitches want room ratio");
       } else if (msg.length > 12) {
         name = msg.substr(12);
@@ -1633,7 +1633,7 @@
           msg += "Su promedio de votación es: " + votes['positiveRatio'].toString() + ".";
           return API.sendChat(msg);
         } else {
-          return API.sendChat("No reconozco a el usuario llamado '" + name + "'");
+          return API.sendChat("No reconozco a el usuario llamado" + name + "");
         }
       } 
     };
