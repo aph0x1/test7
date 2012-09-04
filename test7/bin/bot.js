@@ -1627,17 +1627,9 @@
           votes = r.userVoteRatio(u);
           console.log(u.username + ' votes:', votes);
           msg = u.username + " ha dado woot" + votes['woot'].toString() + " time";
-          if (votes['woot'] === 1) {
-            msg += ', ';
-          } else {
-            msg += 's, ';
-          }
+          if (votes['woot'] === 1)
           msg += "y meh " + votes['meh'].toString() + " veces";
-          if (votes['meh'] === 1) {
-            msg += '. ';
-          } else {
-            msg += 's. ';
-          }
+          if (votes['meh'] === 1) 
           msg += "Su promedio de votación es: " + votes['positiveRatio'].toString() + ".";
           return API.sendChat(msg);
         } else {
