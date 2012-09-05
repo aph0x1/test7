@@ -737,9 +737,6 @@
           case "/seguir":
             resp = "Link de nuestra página de facebook";
             break;
-          case "/dclookup":
-            resp = "Mod only command.  Looks up user for a log of their last disconnect. Syntax: /dclookup @USER";
-            break;
           case "/cmdayuda":
             resp = "Ayuda sobre la utilización de los comandos.";
             break;
@@ -1400,80 +1397,6 @@
 
 
 
-  disconnectLookupCommand = (function(_super) {
-
-    __extends(disconnectLookupCommand, _super);
-
-    function disconnectLookupCommand() {
-      return disconnectLookupCommand.__super__.constructor.apply(this, arguments);
-    }
-
-    disconnectLookupCommand.prototype.init = function() {
-      this.command = '/dclookup';
-      this.parseType = 'startsWith';
-      return this.rankPrivelege = 'mod';
-    };
-
-    disconnectLookupCommand.prototype.functionality = function() {
-      var cmd, dcHour, dcLookupId, dcMeridian, dcMins, dcSongsAgo, dcTimeStr, dcUser, disconnectInstances, givenName, id, recentDisconnect, resp, u, _i, _len, _ref, _ref1;
-      cmd = this.msgData.message;
-      if (cmd.length > 11) {
-        givenName = cmd.slice(11);
-        _ref = data.users;
-        for (id in _ref) {
-          u = _ref[id];
-          if (u.getUser().username === givenName) {
-            dcLookupId = id;
-            disconnectInstances = [];
-            _ref1 = data.userDisconnectLog;
-            for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
-              dcUser = _ref1[_i];
-              if (dcUser.id === dcLookupId) {
-                disconnectInstances.push(dcUser);
-              }
-            }
-            if (disconnectInstances.length > 0) {
-              resp = u.getUser().username + ' has disconnected ' + disconnectInstances.length.toString() + ' time';
-              if (disconnectInstances.length === 1) {
-                resp += '. ';
-              } else {
-                resp += 's. ';
-              }
-              recentDisconnect = disconnectInstances.pop();
-              dcHour = recentDisconnect.time.getHours();
-              dcMins = recentDisconnect.time.getMinutes();
-              if (dcMins < 10) {
-                dcMins = '0' + dcMins.toString();
-              }
-              dcMeridian = dcHour % 12 === dcHour ? 'AM' : 'PM';
-              dcTimeStr = '' + dcHour + ':' + dcMins + ' ' + dcMeridian;
-              dcSongsAgo = data.songCount - recentDisconnect.songCount;
-              resp += 'Their most recent disconnect was at ' + dcTimeStr + ' (' + dcSongsAgo + ' songs ago). ';
-              if (recentDisconnect.waitlistPosition !== void 0) {
-                resp += 'They were ' + recentDisconnect.waitlistPosition + ' song';
-                if (recentDisconnect.waitlistPosition > 1) {
-                  resp += 's';
-                }
-                resp += ' away from the DJ booth.';
-              } else {
-                resp += 'They were not on the waitlist.';
-              }
-              API.sendChat(resp);
-              return;
-            } else {
-              API.sendChat("I haven't seen " + u.getUser().username + " disconnect.");
-              return;
-            }
-          }
-        }
-        return API.sendChat("I don't see a user in the room named '" + givenName + "'.");
-      }
-    };
-
-    return disconnectLookupCommand;
-
-  })(Command);
-
 
   cmds = [cervezaCommand, punishCommand, themeCommand, rulesCommand, roomHelpCommand, wootCommand, comandosCommand, badQualityCommand, downloadCommand, smokeCommand, statusCommand, dieCommand, lockCommand, unlockCommand, swapCommand, popCommand, pushCommand, overplayedCommand, skipCommand, forceSkipCommand, fbCommand, cmdHelpCommand, protectCommand, disconnectLookupCommand];
 
@@ -1580,7 +1503,7 @@
           API.sendChat("No hagas spam!! ");
           return API.moderateDeleteChat(chat.chatID);
         } else {
-          return API.sendChat("I'm supposed to kick you, but you're just too darn pretty.");
+          return API.sendChat("Se supone que tendría que kickearte pero eres muy bonito <3");
         }
       }
     }
