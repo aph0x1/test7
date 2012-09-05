@@ -1,5 +1,5 @@
 (function() {
-  var Command, RoomHelper, User, afkCheck, announceCurate, antispam, apiHooks, badQualityCommand, beggar, chatCommandDispatcher, chatUniversals, cmdHelpCommand, cmds, cervezaCommand, data, dieCommand, disconnectLookupCommand, downloadCommand, fbCommand, forceSkipCommand, handleNewSong, handleUserJoin, handleUserLeave, handleVote, hook, initEnvironment, initHooks, initialize, lockCommand, msToStr, overplayedCommand, popCommand, populateUserData, protectCommand, punishCommand, pupOnline, pushCommand, resetAfkCommand, roomHelpCommand, rulesCommand, settings, skipCommand, smokeCommand, statusCommand, swapCommand, themeCommand, undoHooks, unhook, unhookCommand, unlockCommand, updateDjs, updateVotes, wootCommand,
+  var Command, RoomHelper, User, afkCheck, announceCurate, antispam, apiHooks, badQualityCommand, beggar, chatCommandDispatcher, chatUniversals, cmdHelpCommand, cmds, cervezaCommand, data, dieCommand, disconnectLookupCommand, downloadCommand, fbCommand, forceSkipCommand, handleNewSong, handleUserJoin, handleUserLeave, handleVote, hook, initEnvironment, initHooks, initialize, lockCommand, msToStr, overplayedCommand, popCommand, populateUserData, protectCommand, punishCommand, pupOnline, pushCommand, roomHelpCommand, rulesCommand, settings, skipCommand, smokeCommand, statusCommand, swapCommand, themeCommand, undoHooks, unhook, unlockCommand, updateDjs, updateVotes, wootCommand,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
     __hasProp = {}.hasOwnProperty,
@@ -716,9 +716,6 @@
           case "/estado":
             resp = "Cuando se inicio el bot y estadísticas de las canciónes tocadas.";
             break;
-          case "/unhook events all":
-            resp = "Host only command.  It's complicated";
-            break;
           case "/die":
             resp = "Host only command. Makes bot go bye bye";
             break;
@@ -733,9 +730,6 @@
             break;
           case "/saltar":
             resp = "Comando solo para Mod.  Comando para realizar el salto de djs";
-            break;
-          case "/resetafk":
-            resp = "Mod only command.  Resets AFK timer for user.  Syntax: /resetafk @USER";
             break;
           case "/forceskip":
             resp = "Host only command.  Make pup skip songs when they are supposed to end (addresses triangles of death issue). Syntax: /forceskip [enable|disable]";
@@ -1117,28 +1111,6 @@
 
   })(Command);
 
-  unhookCommand = (function(_super) {
-
-    __extends(unhookCommand, _super);
-
-    function unhookCommand() {
-      return unhookCommand.__super__.constructor.apply(this, arguments);
-    }
-
-    unhookCommand.prototype.init = function() {
-      this.command = '/unhook events all';
-      this.parseType = 'exact';
-      return this.rankPrivelege = 'host';
-    };
-
-    unhookCommand.prototype.functionality = function() {
-      API.sendChat('Unhooking all events...');
-      return undoHooks();
-    };
-
-    return unhookCommand;
-
-  })(Command);
 
   dieCommand = (function(_super) {
 
@@ -1149,17 +1121,17 @@
     }
 
     dieCommand.prototype.init = function() {
-      this.command = '/die';
+      this.command = '/matar bot';
       this.parseType = 'exact';
       return this.rankPrivelege = 'host';
     };
 
     dieCommand.prototype.functionality = function() {
-      API.sendChat('Unhooking Events...');
+      API.sendChat('Desactivando....');
       undoHooks();
-      API.sendChat('Deleting bot data...');
+      API.sendChat('Borrando información del bot..');
       data.implode();
-      return API.sendChat('Consider me dead');
+      return API.sendChat('estoy.... muer.. ah');
     };
 
     return dieCommand;
@@ -1320,42 +1292,6 @@
 
   })(Command);
 
-  resetAfkCommand = (function(_super) {
-
-    __extends(resetAfkCommand, _super);
-
-    function resetAfkCommand() {
-      return resetAfkCommand.__super__.constructor.apply(this, arguments);
-    }
-
-    resetAfkCommand.prototype.init = function() {
-      this.command = '/resetafk';
-      this.parseType = 'startsWith';
-      return this.rankPrivelege = 'mod';
-    };
-
-    resetAfkCommand.prototype.functionality = function() {
-      var id, name, u, _ref;
-      if (this.msgData.message.length > 10) {
-        name = this.msgData.message.substring(11);
-        _ref = data.users;
-        for (id in _ref) {
-          u = _ref[id];
-          if (u.getUser().username === name) {
-            u.updateActivity();
-            API.sendChat('@' + u.getUser().username + '\'s AFK time has been reset.');
-            return;
-          }
-        }
-        API.sendChat('Not sure who ' + name + ' is');
-      } else {
-        API.sendChat('Yo Gimme a name r-tard');
-      }
-    };
-
-    return resetAfkCommand;
-
-  })(Command);
 
   forceSkipCommand = (function(_super) {
 
@@ -1539,7 +1475,7 @@
   })(Command);
 
 
-  cmds = [cervezaCommand, punishCommand, themeCommand, rulesCommand, roomHelpCommand, wootCommand, comandosCommand, badQualityCommand, downloadCommand, smokeCommand, statusCommand, unhookCommand, dieCommand, lockCommand, unlockCommand, swapCommand, popCommand, pushCommand, overplayedCommand, skipCommand, resetAfkCommand, forceSkipCommand, fbCommand, cmdHelpCommand, protectCommand, disconnectLookupCommand];
+  cmds = [cervezaCommand, punishCommand, themeCommand, rulesCommand, roomHelpCommand, wootCommand, comandosCommand, badQualityCommand, downloadCommand, smokeCommand, statusCommand, dieCommand, lockCommand, unlockCommand, swapCommand, popCommand, pushCommand, overplayedCommand, skipCommand, forceSkipCommand, fbCommand, cmdHelpCommand, protectCommand, disconnectLookupCommand];
 
   chatCommandDispatcher = function(chat) {
     var c, cmd, _i, _len, _results;
