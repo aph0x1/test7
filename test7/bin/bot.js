@@ -816,7 +816,7 @@
     badQualityCommand.prototype.functionality = function() {
       var msg;
       msg = "¿Qué deseas tomar?";
-      window.setTimeout(function(){API.sendChat('cerveza | whisky | tequila | vodka | champagne | ron');}, 1000);
+      window.setTimeout(function(){API.sendChat('|cerveza | whisky | tequila | vodka | champagne | ron');}, 1000);
       return API.sendChat(msg);
     };
 
