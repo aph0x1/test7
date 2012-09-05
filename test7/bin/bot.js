@@ -1,5 +1,5 @@
 (function() {
-  var Command, RoomHelper, User, announceCurate, antispam, apiHooks, badQualityCommand, beggar, chatCommandDispatcher, chatUniversals, cmdHelpCommand, cmds, cervezaCommand, data, dieCommand, disconnectLookupCommand, downloadCommand, fbCommand, forceSkipCommand, handleNewSong, handleUserJoin, handleUserLeave, handleVote, hook, initEnvironment, initHooks, initialize, lockCommand, msToStr, overplayedCommand, popCommand, populateUserData, protectCommand, punishCommand, pupOnline, pushCommand, roomHelpCommand, rulesCommand, settings, skipCommand, smokeCommand, statusCommand, swapCommand, themeCommand, undoHooks, unhook, unlockCommand, updateDjs, updateVotes, wootCommand,
+  var Command, RoomHelper, User, announceCurate, antispam, apiHooks, badQualityCommand, chatCommandDispatcher, chatUniversals, cmdHelpCommand, cmds, cervezaCommand, data, dieCommand, disconnectLookupCommand, downloadCommand, fbCommand, forceSkipCommand, handleNewSong, handleUserJoin, handleUserLeave, handleVote, hook, initEnvironment, initHooks, initialize, lockCommand, msToStr, overplayedCommand, popCommand, populateUserData, punishCommand, pupOnline, pushCommand, roomHelpCommand, rulesCommand, settings, skipCommand, smokeCommand, statusCommand, swapCommand, themeCommand, undoHooks, unhook, unlockCommand, updateDjs, updateVotes, wootCommand,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
     __hasProp = {}.hasOwnProperty,
@@ -62,40 +62,20 @@
       curates: 0
     };
 
-    settings.prototype.pupScriptUrl = 'http://den.johnback.us/js/pup.js';
-
-    settings.prototype.afkTime = 12 * 60 * 1000;
-
     settings.prototype.songIntervalMessages = [
       {
         interval: 15,
         offset: 0,
         msg: "/fb"
       }, {
-        interval: 21,
-        offset: 0,
-        msg: "Wondering what songs we consider overplayed? Learn more by typing /overplayed"
-      }, {
         interval: 19,
         offset: 0,
-        msg: "Are you new to the den?  Type /roomhelp to get started."
-      }, {
-        interval: 17,
-        offset: 0,
-        msg: "Wondering how the den's Power Users never get removed for being afk? Type /whywoot to find out"
+        msg: "Eres nuevo en la sala ?  Escribe /ayuda para comenzar."
       }, {
         interval: 23,
         offset: 0,
-        msg: "Theres a reason Justin Beiber isn't played here. We restrict songs to certain genres. Learn more by typing /theme"
-      }, {
-        interval: 50,
-        offset: 17,
-        msg: "Fun fact: 0 of current and past moderators ASKED to be a moderator.  They earned it by being good users.  Shocking, I know."
-      }, {
-        interval: 100,
-        offset: 23,
-        msg: "Did you miss our first Promoters Night?  Check out all the songs played that night here: http://goo.gl/fxEek"
-      }
+        msg: "Para saber que tipo de música pasar escribe: /generos"
+      },
     ];
 
     settings.prototype.reminders = [];
@@ -525,41 +505,7 @@
 
   })();
 
-  protectCommand = (function(_super) {
 
-    __extends(protectCommand, _super);
-
-    function protectCommand() {
-      return protectCommand.__super__.constructor.apply(this, arguments);
-    }
-
-    protectCommand.prototype.init = function() {
-      this.command = '/proteger';
-      this.parseType = 'startsWith';
-      return this.rankPrivelege = 'mod';
-    };
-
-    protectCommand.prototype.functionality = function() {
-      var id, msg, user, username, _ref;
-      msg = this.msgData.message;
-      if (msg.length > 11) {
-        username = msg.substring(11);
-        _ref = data.users;
-        for (id in _ref) {
-          user = _ref[id];
-          if (user.getUser().username === username) {
-            user["protected"] = true;
-            API.sendChat("Yo te protegeré @" + username);
-            return;
-          }
-        }
-      }
-      API.sendChat("Ese nombre no lo he visto");
-    };
-
-    return protectCommand;
-
-  })(Command);
 
   cmdHelpCommand = (function(_super) {
 
@@ -609,7 +555,7 @@
           case "/estado":
             resp = "Cuando se inicio el bot y estadísticas de las canciónes tocadas.";
             break;
-          case "/die":
+          case "/matar bot":
             resp = "Host only command. Makes bot go bye bye";
             break;
           case "/bloq":
@@ -1291,7 +1237,7 @@
 
 
 
-  cmds = [cervezaCommand, punishCommand, themeCommand, rulesCommand, roomHelpCommand, wootCommand, comandosCommand, badQualityCommand, downloadCommand, smokeCommand, statusCommand, dieCommand, lockCommand, unlockCommand, swapCommand, popCommand, pushCommand, overplayedCommand, skipCommand, forceSkipCommand, fbCommand, cmdHelpCommand, protectCommand, disconnectLookupCommand];
+  cmds = [cervezaCommand, punishCommand, themeCommand, rulesCommand, roomHelpCommand, wootCommand, comandosCommand, badQualityCommand, downloadCommand, smokeCommand, statusCommand, dieCommand, lockCommand, unlockCommand, swapCommand, popCommand, pushCommand, overplayedCommand, skipCommand, forceSkipCommand, fbCommand, cmdHelpCommand, disconnectLookupCommand];
 
   chatCommandDispatcher = function(chat) {
     var c, cmd, _i, _len, _results;
@@ -1402,15 +1348,6 @@
     }
   };
 
-  beggar = function(chat) {
-    var msg, r, responses;
-    msg = chat.message.toLowerCase();
-    responses = ["Good idea @{beggar}!  Don't earn your fans or anything thats so yesterday", "Guys @{beggar} asked us to fan him!  Lets all totally do it! ಠ_ಠ", "srsly @{beggar}? ಠ_ಠ", "@{beggar}.  Earning his fans the good old fashioned way.  Hard work and elbow grease.  A true american."];
-    r = Math.floor(Math.random() * responses.length);
-    if (msg.indexOf('fan me') !== -1 || msg.indexOf('fan for fan') !== -1 || msg.indexOf('fan pls') !== -1 || msg.indexOf('fan4fan') !== -1 || msg.indexOf('add me to fan') !== -1) {
-      return API.sendChat(responses[r].replace("{beggar}", chat.from));
-    }
-  };
 
   chatUniversals = function(chat) {
     data.activity(chat);
