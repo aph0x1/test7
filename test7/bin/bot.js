@@ -66,7 +66,7 @@
       {
         interval: 15,
         offset: 0,
-        msg: "/fb"
+        msg: "/seguir"
       }, {
         interval: 19,
         offset: 0,
