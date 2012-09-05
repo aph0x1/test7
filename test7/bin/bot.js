@@ -1348,6 +1348,15 @@
     }
   };
 
+  beggar = function(chat) {
+    var msg, r, responses;
+    msg = chat.message.toLowerCase();
+    responses = ["ohh buena idea @{beggar}!", "Chicos @{beggar} nos esta pidiendo que seamos su fan! O.o", "¿Enserio @{beggar}? -_-"];
+    r = Math.floor(Math.random() * responses.length);
+    if (msg.indexOf('haganse fans') !== -1 || msg.indexOf('fan for fan') !== -1 || msg.indexOf('fan pls') !== -1 || msg.indexOf('fan4fan') !== -1 || msg.indexOf('agregenme a fans') !== -1) {
+      return API.sendChat(responses[r].replace("{beggar}", chat.from));
+    }
+  };
 
   chatUniversals = function(chat) {
     data.activity(chat);
