@@ -1,5 +1,5 @@
 (function() {
-  var Command, RoomHelper, User, announceCurate, antispam, apiHooks, badQualityCommand, beggar, chatCommandDispatcher, chatUniversals, cmdHelpCommand, cmds, cervezaCommand, data, dieCommand, disconnectLookupCommand, downloadCommand, fbCommand, forceSkipCommand, handleNewSong, handleUserJoin, handleUserLeave, handleVote, hook, initEnvironment, initHooks, initialize, lockCommand, msToStr, overplayedCommand, popCommand, populateUserData, punishCommand, pupOnline, pushCommand, roomHelpCommand, rulesCommand, settings, skipCommand, smokeCommand, statusCommand, swapCommand, themeCommand, undoHooks, unhook, unlockCommand, updateDjs, updateVotes, wootCommand,
+  var Command, RoomHelper, User, announceCurate, antispam, apiHooks, badQualityCommand, beggar, chatCommandDispatcher, chatUniversals, cmdHelpCommand, cmds, cervezaCommand, tomarCommand, data, dieCommand, disconnectLookupCommand, downloadCommand, fbCommand, forceSkipCommand, handleNewSong, handleUserJoin, handleUserLeave, handleVote, hook, initEnvironment, initHooks, initialize, lockCommand, msToStr, overplayedCommand, popCommand, populateUserData, punishCommand, pupOnline, pushCommand, roomHelpCommand, rulesCommand, settings, skipCommand, smokeCommand, statusCommand, swapCommand, themeCommand, undoHooks, unhook, unlockCommand, updateDjs, updateVotes, wootCommand,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
     __hasProp = {}.hasOwnProperty,
@@ -571,7 +571,7 @@
             resp = "Comando solo para Mod.  Comando para realizar el salto de djs";
             break;
           case "/forceskip":
-            resp = "Host only command.  Make pup skip songs when they are supposed to end (addresses triangles of death issue). Syntax: /forceskip [enable|disable]";
+            resp = "Comando solo para Host. Evitar los triángulos, o bugs relacionados]";
             break;
           case "/seguir":
             resp = "Link de nuestra página de facebook";
@@ -796,6 +796,41 @@
     return wootCommand;
 
   })(Command);
+
+
+
+  tomarCommand = (function(_super) {
+
+    __extends(badQualityCommand, _super);
+
+    function badQualityCommand() {
+      return badQualityCommand.__super__.constructor.apply(this, arguments);
+    }
+
+    badQualityCommand.prototype.init = function() {
+      this.command = '/tomar';
+      this.parseType = 'exact';
+      return this.rankPrivelege = 'mod';
+    };
+
+    badQualityCommand.prototype.functionality = function() {
+      var msg;
+      msg = "¿Qué deseas tomar?";
+      window.setTimeout(function(){API.sendChat('cerveza | whisky | tequila | vodka | champagne | ron');}, 1000);
+      return API.sendChat(msg);
+    };
+
+    return badQualityCommand;
+
+  })(Command);
+
+
+
+
+
+
+
+
 
 
     comandosCommand = (function(_super) {
@@ -1237,7 +1272,7 @@
 
 
 
-  cmds = [cervezaCommand, punishCommand, themeCommand, rulesCommand, roomHelpCommand, wootCommand, comandosCommand, badQualityCommand, downloadCommand, smokeCommand, statusCommand, dieCommand, lockCommand, unlockCommand, swapCommand, popCommand, pushCommand, overplayedCommand, skipCommand, forceSkipCommand, fbCommand, cmdHelpCommand, disconnectLookupCommand];
+  cmds = [cervezaCommand, tomarCommand, punishCommand, themeCommand, rulesCommand, roomHelpCommand, wootCommand, comandosCommand, badQualityCommand, downloadCommand, smokeCommand, statusCommand, dieCommand, lockCommand, unlockCommand, swapCommand, popCommand, pushCommand, overplayedCommand, skipCommand, forceSkipCommand, fbCommand, cmdHelpCommand, disconnectLookupCommand];
 
   chatCommandDispatcher = function(chat) {
     var c, cmd, _i, _len, _results;
