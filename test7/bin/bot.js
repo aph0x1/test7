@@ -849,7 +849,7 @@
 
     comandosCommand.prototype.functionality = function() {
       var msg, nameIndex;
-      msg = "|cerveza |tortura |generos |reglas |woot |malacalidad |descargar |fumar |estado |bloq |desbloq |repetidas |saltar |forceskip |seguir |cmdayuda |ultimo |poner";
+      msg = "|cerveza |tortura |generos |reglas |woot |malacalidad |descargar |fumar |estado |bloq |desbloq |saltar |forceskip |seguir |cmdayuda |ultimo |poner";
       if ((nameIndex = this.msgData.message.indexOf('@')) !== -1) {
         return API.sendChat(this.msgData.message.substr(nameIndex) + ', ' + msg);
       } else {
