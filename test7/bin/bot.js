@@ -99,16 +99,8 @@ var o_chatcmds = {
 	},
 	
 
-	'hugs foxbot': {
-		f: f_hug,
-		needsPerm: false,
-		visible: true
-	},
-	'rapes foxbot': {
-		f: f_rape,
-		needsPerm: false,
-			visible: true
-	},
+
+
 	/////////////////////////////////////////////
 	// chmod 554
 	/////////////////////////////////////////////
@@ -134,7 +126,7 @@ var o_chatcmds = {
 		needsPerm: true,
 		visible: true
 	},
-	'/skip': {
+	'/saltar': {
 		f: f_skip,
 		needsPerm: true,
 		needsLocalPerm: true,
@@ -364,12 +356,6 @@ function f_retry(data) {
 	);}, 5000); //This line is part of the LAST window.setTimeout command
 }	
 
-function f_rape(data){
-	API.sendChat('/me slays @'+data.from+'!');
-}
-function f_hug(data){
-	API.sendChat('/me hugs @'+data.from+'!');
-}
 
 function f_rule(data) {
 	API.sendChat('/me Rules: '+o_settings.rules);
