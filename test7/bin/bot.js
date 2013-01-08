@@ -133,7 +133,7 @@ var o_chatcmds = {
 		needsPerm: true,
 		visible: true
 	},	
-	'/unlock': {
+	'/desbloquear': {
 		f: f_unlock,
 		needsPerm: true,
 		needsLocalPerm: true,
@@ -198,7 +198,7 @@ function join(user){
 
 
 function f_curate(data){
-	API.sendChat("/me " + data.user.username + " Le gusta esta");
+	API.sendChat("/me A " + data.user.username + " le gusta esta canción");
 }
 function f_commands(data){
 	var cmds = '';
@@ -208,11 +208,11 @@ function f_commands(data){
 		}
 	}
 	cmds_clean = cmds.slice(0, -2);
-	API.sendChat('/me Commands currently supported are: '+cmds_clean);
+	API.sendChat('/me Comandos del chat: '+cmds_clean);
 }
 
 function f_skip(data) {
-    API.sendChat('/me Current DJ has been skipped by operator!');
+    API.sendChat('/me Se ha saltado el turno del dj');
     window.setTimeout(function(){new ModerationForceSkipService(Models.room.data.historyID);}, 1000);
 	window.setTimeout(function(){API.sendChat("/me Your song got skipped because it was either not on genre, overplayed or (the outro) was too long.");}, 2000);
 }
@@ -234,7 +234,7 @@ function f_lock(data) {
 		);
 }
 function f_unlock(data){
-	API.sendChat('/me Dj Booth has been unlocked by operator!');
+	API.sendChat('/me La cabina de dj ha sido desbloqueada');
     rpcGW.execute('room.update_options', null, Models.room.data.id,
 		{
 			name: Models.room.data.name,
