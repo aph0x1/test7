@@ -460,7 +460,7 @@ function f_suidobashijuko(data){
 	API.sendChat("Why are we talking about the suidobashijuko again? Are you going to buy me one?");
 }
 function f_nospam(data){
-	API.sendChat("Hey, @"+data.from+" ! Please do not adverise plug.dj rooms in here, thanks!");
+	API.sendChat("O.O @"+data.from+" ! Deja de hacer spam en esta sala, gracias!");
 	API.moderateDeleteChat(data.chatID);
 }
 function f_profanity(data){
