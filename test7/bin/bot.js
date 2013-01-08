@@ -89,16 +89,8 @@ var o_chatcmds = {
 		needsPerm: false,
 		visible: true
 	},
-	'/dance': {
-		f: f_dance,
-		needsPerm: false,
-		visible: true
-	},
-	'/drink': {
-		f: f_drink,
-		needsPerm: false,
-		visible: true
-	},
+
+
 	'/fb': {
 		f: f_fb,
 		needsPerm: false,
@@ -886,9 +878,7 @@ function f_rape(data){
 function f_hug(data){
 	API.sendChat('/me hugs @'+data.from+'!');
 }
-function f_dance(data){
-	API.sendChat('/me Is on Fire!');
-}
+
 function f_rule(data) {
 	API.sendChat('/me Rules: '+o_settings.rules);
 }
@@ -899,105 +889,7 @@ function f_brb(data) {
 function f_nou(data) {
 	API.sendChat('@'+data.from+' No U!');
 }
-function f_drink(data) {
-	switch(data.fromID){
-		case "50aeb0af3e083e18fa2d5d6e":
-			//SartheBoat
-			API.sendChat('Some gasoline to fuel the @'+data.from+' ! The ship has been refueled, captain!');
-			break;
-		case "50aeb5e83e083e18fa2e20a0":
-			//WJG
-			API.sendChat("Here's your hard cider, @"+data.from+" . Enjoy!");
-			break;
-		case "50aeb07a877b9217e2fbffb2":
-			//Guess who? It's already in there
-			API.sendChat("The master has spoken! One Absolut Vodka for @"+data.from+" !");
-			break;
-		case "50aeb020d6e4a94f774740a9":
-			//foxtrot
-			API.sendChat("Sorry, we're all out of alcohol. Here's your apple juice, @"+data.from+" .");
-			break;
-		case "50aeb3fa3e083e18fa2ddbed":
-			//FramedTKE
-			API.sendChat("Dang, you were framed? Here's a jagerbomb to help you get through the night, @"+data.from+" . All your drinks are on the house!");
-			break;
-		case "50aeb3ea3e083e18fa2dd996":
-			//[SOL]
-			API.sendChat("Here's your scotch, Mr. "+data.from+" , sir.");
-			break;
-		case "50aeb3fd96fba52c3ca0d0a6":
-			//krstenalex
-			API.sendChat("Rum delivered by Ms. Jolie? Hm. I can do the rum but I don't know about Ms. Jolie. Ah, speak of the devil, she just walked through the door. Here is rum your with a side of Angelina Jolie, @"+data.from+" !");
-			break;
-		case "50aeb3fd96fba52c3ca0d0c2":
-			//micro
-			API.sendChat("Here's some tequila and chocolate milk. Down one drink, or down both. The choice is yours, "+data.from+" .");
-			break;
-		case "50aeb3aa877b9217e2fc8036":
-			//CopyLeft
-			API.sendChat("Here is a bloody mary, with some actual blood from Mary... Please refrain from ordering a drink, @"+data.from+" , as we are running out of people named Mary...");
-			break;
-		case "50aeafe696fba52c3ca02f1b":
-			//Linear Logic
-			API.sendChat("Ah, Mr. @"+data.from+" ! Here's your mojito, good sir!");
-			break;
-		case "50aeb301c3b97a2cb4c2fa57":
-			//Mamushka
-			API.sendChat("Shirley Temple? Here you go! Enjoy, "+data.from+" !");
-			break;
-		case "50aeb310d6e4a94f7747a527":
-			//Wobbles
-			API.sendChat("Here's your Apple Martini, Mr @"+data.from+" . Enjoy!");
-			break;
-		case "50aeb402877b9217e2fc8dcf":
-			//Syvel
-			API.sendChat("And a Dunkel Hefeweizen for @"+data.from+" !");
-			break;
-		case "50aeb3fd877b9217e2fc8d13":
-			//DJ MC Wheelchair
-			API.sendChat("Here's your bottle of Jack, "+data.from+" . When you leave for the night, remember to come back!");
-			break;
-		case "50aeb20fc3b97a2cb4c2d804":
-			// Bass Addict
-			API.sendChat("The Supreme Overlord wants cranberry juice! What are you doing? Yes, the Supreme Overlord. Yes, @"+data.from+"Hurry up. Get cranberry juice. Yes, now.");
-			API.sendchat("Sorry for the wait Mr. Supreme Overlord, sir. *Hands @"+data.from+" a glass of cranberry juice.* There is more in the back if you need it, Mr. Supreme Overlord, sir.");
-			break;
-		case "50c22bc9877b92490a396b28":
-			//Acidus. He gets a special one because he helped with the code. No, he did not get full code. Just one tiny snippet.
-			API.sendChat("Here is your bottle of Valmiermuiza, "+data.from+" . You get a lifetime supply, on the house. So feel free to grab another!");
-			break;
-		case "50bd6f1596fba554c159e1ab":
-			//[tw].me
-			API.sendChat("Hahaha @"+data.from+", get back to work! No drink for you!");
-			break;
-		case "50aeb04ac3b97a2cb4c29c3c":
-			//[tw]Mixolydian Muse
-			API.sendChat("Your usual? Here's your Gold Medal Taiwan Beer, "+data.from+" !");
-			break;
-		case "50aeb02ad6e4a94f77474299":
-			//[F]oxtrot[Q]ontrol
-			API.sendChat("Here's your Rum @"+data.from+", Yarr matey!");
-			break;
-		case "50bfaa69c3b97a770bf85bbc":
-			//97#DJMnC#79
-			API.sendChat("Here's your Coca Cola @"+data.from+", Enjoy!");
-			break;
-		case "50aeb11a96fba52c3ca0699e":
-			//super
-			API.sendChat("Here's your Absinthe Frappé @"+data.from+", Enjoy good sir!");
-			break;
-		case "50aeae9bc3b97a2cb4c25954":
-			//Kendall
-			API.sendChat("Here's your water @"+data.from+", Enjoy!");
-			break;
-		case "50aeb0173e083e18fa2d3de0":
-			//Powdered Toast Man
-			API.sendChat("Here's your cheap redneck whiskey @"+data.from+", Enjoy!");
-			break;
-		default:
-			API.sendChat('Here is your generic strong alcoholic beverage @'+data.from+' , enjoy!');
-	}
-}
+
 function f_whymeh(data) {
 	API.sendChat('/me Please reserve mehs for songs that are A: Troll songs, B: Truly terrible, or C: Overplayed. If you are simply not feeling a song remain neutral.');
 }
