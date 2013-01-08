@@ -104,11 +104,7 @@ var o_chatcmds = {
 	/////////////////////////////////////////////
 	// chmod 554
 	/////////////////////////////////////////////
-	'/autostrict': {
-		f: f_toggleStrictMode,
-		needsPerm: true,
-		visible: true
-	},
+
 	'/lock': {
 		f: f_lock,
 		needsPerm: true,
@@ -294,16 +290,7 @@ function f_reload(data) {
     window.setTimeout(function(){location.reload();}, 1000);
 }
 
-function f_toggleStrictMode(data) {
-	if(o_settings.strictMode == false) {
-		API.sendChat('/me Strict mode now enabled');
-		o_settings.strictMode = true;
-	}
-	else {
-		API.sendChat('/me Strict mode now disabled');
-		o_settings.strictMode = false;
-	}
-}
+
 function f_set(data) {
     var args = f_getArgs(data.message);
     var setValue = args[1];
