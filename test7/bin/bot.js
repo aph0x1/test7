@@ -97,16 +97,8 @@ var o_chatcmds = {
 		needsPerm: false,
 		visible: true
 	},
-	'/whymeh': {
-		f: f_whymeh,
-		needsPerm: false,
-		visible: true
-	},
-	'/banned': {
-		f: f_bannedlist,
-		needsPerm: false,
-		visible: true
-	},
+	
+
 	'hugs foxbot': {
 		f: f_hug,
 		needsPerm: false,
@@ -390,14 +382,9 @@ function f_nou(data) {
 	API.sendChat('@'+data.from+' No U!');
 }
 
-function f_whymeh(data) {
-	API.sendChat('/me Please reserve mehs for songs that are A: Troll songs, B: Truly terrible, or C: Overplayed. If you are simply not feeling a song remain neutral.');
-}
 
-function f_joke(data) {
-    n = Math.floor(Math.random()*a_jokes.length);
-    API.sendChat('/me Joke #'+n+': '+a_jokes[n]);
-}
+
+
 function f_test(data) {
 	s = '[WM: '+o_settings.welcomeMsg+', GM: '+o_settings.goodbyeMsg+', AS: '+o_settings.autoSkip+', MSL: '+o_settings.maxSongLength+', AW: '+o_settings.autoWoot+', AQ: N/A, AN: '+o_settings.announcer+', M: '+b_hasModRights+']';
 	API.sendChat('/me Systems are online and functional! '+s);
@@ -530,9 +517,7 @@ function f_profanity(data){
 	} 
 }
 
-function f_bannedlist(data){
-	API.sendChat("/me Click the following link to see the list of songs that are banned: http://goo.gl/9tLE7")
-}
+
 function f_announcer(){
 	if(o_settings.announcer){
 		API.sendChat("/me Enjoying the music and awesome people in this room? Consider joining our facebook group at http://goo.gl/vpHWz and Follow us on twitter @ElectronicELE !");
