@@ -155,53 +155,10 @@ var o_chatcmds = {
 		needsPerm: false,
 		visible: false
 	},	
-	'suidobashijuko': {
-		f: f_suidobashijuko,
-		needsPerm: false,
-		visible: false
-	},
+
         // Language handling (currently English only, so users can feel free to get colorful in French...)
         // This list can be further populated as necessary but this should cover the basics
-        'fuck': {
-		f: f_profanity,
-		needsPerm: false,
-		visible: false
-	},
-        'shit': {
-		f: f_profanity,
-		needsPerm: false,
-		visible: false
-	},
-        'damn': { // This may not be profane enough to make the list, I'll leave the decision to the powers above me
-		f: f_profanity,
-		needsPerm: false,
-		visible: false
-	},
-        'bitch': {
-		f: f_profanity,
-		needsPerm: false,
-		visible: false
-	},
-        'fag': { // Works for 'faggot'
-		f: f_profanity,
-		needsPerm: false,
-		visible: false
-	},
-        'cunt': {
-		f: f_profanity,
-		needsPerm: false,
-		visible: false
-	},
-        'whore': {
-		f: f_profanity,
-		needsPerm: false,
-		visible: false
-	},
-        'nigger': {
-		f: f_profanity,
-		needsPerm: false,
-		visible: false
-	},
+   
 	////////////////////////////////////////////
 	// chmod 110
 	////////////////////////////////////////////
@@ -456,19 +413,12 @@ function f_djAdvance(obj){
 		}
 	}
 }
-function f_suidobashijuko(data){
-	API.sendChat("Why are we talking about the suidobashijuko again? Are you going to buy me one?");
-}
+
 function f_nospam(data){
 	API.sendChat("O.O @"+data.from+" ! Deja de hacer spam en esta sala, gracias!");
 	API.moderateDeleteChat(data.chatID);
 }
-function f_profanity(data){
-	if(o_settings.profanityfilter){
-		API.sendChat("Hey, @"+data.from+" ! Please watch your language!");
-		API.moderateDeleteChat(data.chatID);
-	} 
-}
+
 
 
 function f_announcer(){
