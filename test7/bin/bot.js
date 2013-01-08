@@ -111,7 +111,7 @@ var o_chatcmds = {
 		needsLocalPerm: true,
 		visible: true
 	},
-	'/retry': {
+	'/reintentar': {
 		f: f_retry,
 		needsPerm: true,
 		needsLocalPerm: true,
@@ -128,11 +128,7 @@ var o_chatcmds = {
 		needsLocalPerm: true,
 		visible: true
 	},
-	'/test': {
-		f: f_test,
-		needsPerm: true,
-		visible: true
-	},	
+
 	'/unlock': {
 		f: f_unlock,
 		needsPerm: true,
@@ -198,7 +194,7 @@ function join(user){
 
 
 function f_curate(data){
-	API.sendChat("/me " + data.user.username + " loves this track!");
+	API.sendChat("/me " + data.user.username + " Le gusta esta canción");
 }
 function f_commands(data){
 	var cmds = '';
@@ -247,7 +243,7 @@ function f_unlock(data){
 	);
 }
 function f_retry(data) {
-	API.sendChat('/me Please choose a different song and try again.');
+	API.sendChat('/me Por favor selecciona una canción diferente e intentalo denuevo.');
 	window.setTimeout(function(){rpcGW.execute('room.update_options', null, Models.room.data.id,
 		{
 			name: Models.room.data.name,
@@ -281,10 +277,7 @@ function f_rule(data) {
 
 
 
-function f_test(data) {
-	s = '[WM: '+o_settings.welcomeMsg+', GM: '+o_settings.goodbyeMsg+', AS: '+o_settings.autoSkip+', MSL: '+o_settings.maxSongLength+', AW: '+o_settings.autoWoot+', AQ: N/A, AN: '+o_settings.announcer+', M: '+b_hasModRights+']';
-	API.sendChat('/me Systems are online and functional! '+s);
-}
+
 function f_reload(data) {
     API.sendChat('/me [TERMINATING]');
     window.setTimeout(function(){location.reload();}, 1000);
@@ -304,12 +297,12 @@ function f_set(data) {
 		s = 'o_settings.'+args[0]+' = \''+setValue+'\';';
     }
 	eval(s);
-	API.sendChat('/me '+args[0]+' now '+eval('o_settings.'+args[0]));
+	API.sendChat('/me '+args[0]+' ahora '+eval('o_settings.'+args[0]));
 }
 
 function f_checkChat(data) {
 //Will work on this. It's kind of annoying as it stands and doesn't allow for cool stuff
-	if((data.type == "message") && (data.fromID != API.getSelf().id) ) {
+	if((data.type == "mensaje") && (data.fromID != API.getSelf().id) ) {
 		for(var s in o_chatcmds) {
 			if(data.message.toString().toLowerCase().indexOf(s) != -1) { // The only requesite of this more efficient chat parsing system is that all chat vars are lowercase
 				if(o_chatcmds[s].needsPerm){
