@@ -149,11 +149,7 @@ var o_chatcmds = {
 
 
 
-	'no u': {
-		f: f_nou,
-		needsPerm: false,
-		visible: false
-	}, 
+
 	'plug.dj/': {
 		f: f_nospam,
 		needsPerm: false,
@@ -340,9 +336,6 @@ function f_rule(data) {
 }
 
 
-function f_nou(data) {
-	API.sendChat('@'+data.from+' No U!');
-}
 
 
 
