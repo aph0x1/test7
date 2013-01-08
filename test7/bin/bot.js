@@ -147,26 +147,8 @@ var o_chatcmds = {
 	// chmod 111
 	////////////////////////////////////////////
 
-	'g2g': {
-		f: f_userIntentLeave,
-		needsPerm: false,
-		visible: false
-	},
-	'gtg': {
-		f: f_userIntentLeave,
-		needsPerm: false,
-		visible: false
-	},
-	'got2go': {
-		f: f_userIntentLeave,
-		needsPerm: false,
-		visible: false
-	},
-	'gotta go': {
-		f: f_userIntentLeave,
-		needsPerm: false,
-		visible: false
-	},
+
+
 	'no u': {
 		f: f_nou,
 		needsPerm: false,
@@ -373,9 +355,7 @@ function f_reload(data) {
     API.sendChat('/me [TERMINATING]');
     window.setTimeout(function(){location.reload();}, 1000);
 }
-function f_userIntentLeave(data) {
-	API.sendChat('@'+data.from+': we hope you enjoyed your stay, please visit us again soon!');
-}
+
 function f_toggleStrictMode(data) {
 	if(o_settings.strictMode == false) {
 		API.sendChat('/me Strict mode now enabled');
