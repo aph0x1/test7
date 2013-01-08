@@ -170,8 +170,8 @@ function f_foxbotInit() {
 	Playback.setVolume(0);
 }
 function join(user){
-	if(user.id=="50aeb47c96fba52c3ca0e10a"){
-		API.sendChat("/me :: Ohhh miren quien ha ingresado a la sala!!, @"+user.username+" ! Bienvenido");
+	if(user.id=="50aeb179d6e4a94f77477687"){
+		API.sendChat("/me :: Ohhh acaba de ingresar mi creador a la sala!!, @"+user.username+" ! Bienvenido mi señor.");
 	}
 	else if(user.permission.toString()>1){
 		API.sendChat("/me :: Acaba de ingresar un moderador a la sala!!. El nombre del moderador es  "+user.username+" . Venga, saludenlo!");
@@ -204,7 +204,7 @@ function f_skip(data) {
     window.setTimeout(function(){new ModerationForceSkipService(Models.room.data.historyID);}, 1000);
 }
 function f_long() {
-	API.sendChat('@'+o_tmp.username+' Your song has played for '+o_settings.maxSongLength+' minutes and will now be skipped!');
+	API.sendChat('@'+o_tmp.username+' Tu canción ha estado por  '+o_settings.maxSongLength+' minutos y ahora sera quitada.');
     window.setTimeout(function(){new ModerationForceSkipService(Models.room.data.historyID);}, 1000);
 }
 function f_lock(data) {
