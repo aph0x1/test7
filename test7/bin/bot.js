@@ -64,8 +64,8 @@ var o_settings = {
 	profanityfilter: false,
 	announcer: true,
 	maxSongLength: 8, // in mins.
-    	rules: 'Play EDM only, no Trap. 8 min max. Please show love and respect to everyone.',
-    	welcome: 'Thank you for plugging in!',
+    	rules: 'Cualquier género de música es permitido, no superar los 8min. Muestra respecto todos en la sala.',
+    	welcome: 'Gracias por entrar a ForoCoches',
 	strictMode: false,
 	i_timerID: null,
 	f_autoSkip: f_long
@@ -92,7 +92,7 @@ var o_chatcmds = {
 
 
 
-	'/rules': {
+	'/reglas': {
 		f: f_rule,
 		needsPerm: false,
 		visible: true
@@ -194,7 +194,7 @@ function join(user){
 		API.sendChat("/me :: A wild moderator appears! Wait, no. We know this one. The moderator's name is "+user.username+" . Well, that was anticlimactic. Now back to regular programming");
 	}
 	else{
-		API.sendChat("/me :: Welcome @" + user.username + " to " + Models.room.data.name + ". "+o_settings.welcome);
+		API.sendChat("/me :: Bienvenido @" + user.username + " a " + Models.room.data.name + ". "+o_settings.welcome);
 		//window.setTimeout(function(){f_rule({from: user.username});}, 1000); //Uncomment to send rules
 	}
 }
@@ -289,7 +289,7 @@ function f_retry(data) {
 
 
 function f_rule(data) {
-	API.sendChat('/me Rules: '+o_settings.rules);
+	API.sendChat('/me Reglas: '+o_settings.rules);
 }
 
 
