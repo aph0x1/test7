@@ -64,7 +64,7 @@ var o_settings = {
 	profanityfilter: false,
 	announcer: true,
 	maxSongLength: 8, // in mins.
-    	rules: 'Cualquier género de música es permitido, no superar los 8min. Muestra respecto todos en la sala.',
+    	rules: 'Cualquier género de música es permitido, no superar los 8min. Muestra respecto a todos en la sala.',
     	welcome: 'Gracias por entrar a ForoCoches',
 	strictMode: false,
 	i_timerID: null,
@@ -179,7 +179,6 @@ function f_foxbotInit() {
 	b_hasModRights = API.getSelf().permission.toString()>1;
 	// now all the event listeners
 	API.addEventListener(API.USER_JOIN, join);
-	API.addEventListener(API.USER_LEAVE, leave);
 	API.addEventListener("curateUpdate", f_curate);
 	API.addEventListener(API.CHAT, f_checkChat);
 	API.addEventListener(API.DJ_ADVANCE, f_djAdvance);
@@ -188,10 +187,10 @@ function f_foxbotInit() {
 }
 function join(user){
 	if(user.id=="50aeb20fc3b97a2cb4c2d804"){
-		API.sendChat("/me :: All hail our Extreme Overlord, @"+user.username+" ! Welcome back master!");
+		API.sendChat("/me :: Ohhh miren quien ha ingresado a la sala!!, @"+user.username+" ! Bienvenido");
 	}
 	else if(user.permission.toString()>1){
-		API.sendChat("/me :: A wild moderator appears! Wait, no. We know this one. The moderator's name is "+user.username+" . Well, that was anticlimactic. Now back to regular programming");
+		API.sendChat("/me :: Acaba de ingresar un moderador a la sala!!. El nombre del moderador es  "+user.username+" . Venga, saludenlo!");
 	}
 	else{
 		API.sendChat("/me :: Bienvenido @" + user.username + " a " + Models.room.data.name + ". "+o_settings.welcome);
@@ -200,17 +199,6 @@ function join(user){
 }
 
 
-function leave(user){
-	if(user.id=="50aeb20fc3b97a2cb4c2d804"){
-		API.sendChat("/me :: All hail our Extreme Overlord, @"+user.username+" ! Thank you for gracing us with your presence!");
-	}
-	else if(user.permission.toString()>1){
-		API.sendChat("/me :: Bye bye, Mr. Moderator, sir! Bye @"+user.username+" !");
-	}
-	else if(user.permission.toString()==1){
-		API.sendChat("/me :: [Featured DJ]"+user.username+" has left the room");
-	}
-}
 
 
 function f_curate(data){
