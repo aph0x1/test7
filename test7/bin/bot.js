@@ -105,7 +105,7 @@ var o_chatcmds = {
 	// chmod 554
 	/////////////////////////////////////////////
 
-	'/lock': {
+	'/bloquear': {
 		f: f_lock,
 		needsPerm: true,
 		needsLocalPerm: true,
@@ -221,7 +221,7 @@ function f_long() {
     window.setTimeout(function(){new ModerationForceSkipService(Models.room.data.historyID);}, 1000);
 }
 function f_lock(data) {
-        API.sendChat('/me Dj Booth has been locked by operator!');
+        API.sendChat('/me La cabina de dj ha sido bloqueada');
         rpcGW.execute('room.update_options', null, Models.room.data.id,
               {
                 name: Models.room.data.name,
