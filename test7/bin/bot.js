@@ -147,12 +147,83 @@ var o_chatcmds = {
 	// chmod 111
 	////////////////////////////////////////////
 
+	'g2g': {
+		f: f_userIntentLeave,
+		needsPerm: false,
+		visible: false
+	},
+	'gtg': {
+		f: f_userIntentLeave,
+		needsPerm: false,
+		visible: false
+	},
+	'got2go': {
+		f: f_userIntentLeave,
+		needsPerm: false,
+		visible: false
+	},
+	'gotta go': {
+		f: f_userIntentLeave,
+		needsPerm: false,
+		visible: false
+	},
+	'no u': {
+		f: f_nou,
+		needsPerm: false,
+		visible: false
+	}, 
 	'plug.dj/': {
 		f: f_nospam,
 		needsPerm: false,
 		visible: false
-
-
+	},	
+	'suidobashijuko': {
+		f: f_suidobashijuko,
+		needsPerm: false,
+		visible: false
+	},
+        // Language handling (currently English only, so users can feel free to get colorful in French...)
+        // This list can be further populated as necessary but this should cover the basics
+        'fuck': {
+		f: f_profanity,
+		needsPerm: false,
+		visible: false
+	},
+        'shit': {
+		f: f_profanity,
+		needsPerm: false,
+		visible: false
+	},
+        'damn': { // This may not be profane enough to make the list, I'll leave the decision to the powers above me
+		f: f_profanity,
+		needsPerm: false,
+		visible: false
+	},
+        'bitch': {
+		f: f_profanity,
+		needsPerm: false,
+		visible: false
+	},
+        'fag': { // Works for 'faggot'
+		f: f_profanity,
+		needsPerm: false,
+		visible: false
+	},
+        'cunt': {
+		f: f_profanity,
+		needsPerm: false,
+		visible: false
+	},
+        'whore': {
+		f: f_profanity,
+		needsPerm: false,
+		visible: false
+	},
+        'nigger': {
+		f: f_profanity,
+		needsPerm: false,
+		visible: false
+	},
 	////////////////////////////////////////////
 	// chmod 110
 	////////////////////////////////////////////
@@ -287,6 +358,9 @@ function f_rule(data) {
 }
 
 
+function f_nou(data) {
+	API.sendChat('@'+data.from+' No U!');
+}
 
 
 
