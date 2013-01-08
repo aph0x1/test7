@@ -128,8 +128,12 @@ var o_chatcmds = {
 		needsLocalPerm: true,
 		visible: true
 	},
-
-	'/desbloquear': {
+	'/test': {
+		f: f_test,
+		needsPerm: true,
+		visible: true
+	},	
+	'/unlock': {
 		f: f_unlock,
 		needsPerm: true,
 		needsLocalPerm: true,
@@ -154,7 +158,11 @@ var o_chatcmds = {
 	////////////////////////////////////////////
 	// chmod 110
 	////////////////////////////////////////////
-
+	'/kill': {
+		f: f_reload,
+		needsPerm: true,
+		visible: false
+	}
 	////////////////////////////////////////////
 	// chmod 100 ::TEST COMMANDS
 	////////////////////////////////////////////
@@ -163,7 +171,7 @@ var o_chatcmds = {
 
 //Begin Function Declarations
 function f_foxbotInit() {
-	API.sendChat('/me El bot esta activado');
+	API.sendChat('/me Foxbot activated!');
 	b_hasModRights = API.getSelf().permission.toString()>1;
 	// now all the event listeners
 	API.addEventListener(API.USER_JOIN, join);
@@ -175,7 +183,7 @@ function f_foxbotInit() {
 }
 function join(user){
 	if(user.id=="50aeb47c96fba52c3ca0e10a"){
-		API.sendChat("/me :: Ohhh miren quien ha ingresado a la sala, @"+user.username+" ! Bienvenido");
+		API.sendChat("/me :: Ohhh miren quien ha ingresado a la sala!!, @"+user.username+" ! Bienvenido");
 	}
 	else if(user.permission.toString()>1){
 		API.sendChat("/me :: Acaba de ingresar un moderador a la sala!!. El nombre del moderador es  "+user.username+" . Venga, saludenlo!");
@@ -200,7 +208,7 @@ function f_commands(data){
 		}
 	}
 	cmds_clean = cmds.slice(0, -2);
-	API.sendChat('/me Comandos del chat: '+cmds_clean);
+	API.sendChat('/me Commands currently supported are: '+cmds_clean);
 }
 
 function f_skip(data) {
@@ -226,7 +234,7 @@ function f_lock(data) {
 		);
 }
 function f_unlock(data){
-	API.sendChat('/me La cabina de dj ha sido desbloqueada');
+	API.sendChat('/me Dj Booth has been unlocked by operator!');
     rpcGW.execute('room.update_options', null, Models.room.data.id,
 		{
 			name: Models.room.data.name,
@@ -273,7 +281,14 @@ function f_rule(data) {
 
 
 
-
+function f_test(data) {
+	s = '[WM: '+o_settings.welcomeMsg+', GM: '+o_settings.goodbyeMsg+', AS: '+o_settings.autoSkip+', MSL: '+o_settings.maxSongLength+', AW: '+o_settings.autoWoot+', AQ: N/A, AN: '+o_settings.announcer+', M: '+b_hasModRights+']';
+	API.sendChat('/me Systems are online and functional! '+s);
+}
+function f_reload(data) {
+    API.sendChat('/me [TERMINATING]');
+    window.setTimeout(function(){location.reload();}, 1000);
+}
 
 
 function f_set(data) {
