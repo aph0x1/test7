@@ -117,11 +117,7 @@ var o_chatcmds = {
 		needsLocalPerm: true,
 		visible: true
 	},
-	'/set': {
-		f: f_set,
-		needsPerm: true,
-		visible: true
-	},
+
 	'/saltar': {
 		f: f_skip,
 		needsPerm: true,
@@ -283,21 +279,7 @@ function f_reload(data) {
 }
 
 
-function f_set(data) {
-    var args = f_getArgs(data.message);
-    var setValue = args[1];
-    var s;
-	
-    if((setValue == 'true') || (setValue == 'false')){
-		s = 'o_settings.'+args[0]+' = '+setValue+';';
-	}
-	else { // we're dealing with strings
-        setValue = setValue.replace("'", "\\'");
-		s = 'o_settings.'+args[0]+' = \''+setValue+'\';';
-    }
-	eval(s);
-	API.sendChat('/me '+args[0]+' now '+eval('o_settings.'+args[0]));
-}
+
 
 function f_checkChat(data) {
 //Will work on this. It's kind of annoying as it stands and doesn't allow for cool stuff
