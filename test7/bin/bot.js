@@ -83,12 +83,8 @@ var o_chatcmds = {
 	/////////////////////////////////////////////
 	// chmod 555
 	/////////////////////////////////////////////
-	'/about': {
-		f: f_about,
-		needsPerm: false,
-		visible: true
-	},
-	'/commands': {
+
+	'/comandos': {
 		f: f_commands,
 		needsPerm: false,
 		visible: true
@@ -896,9 +892,7 @@ function f_dance(data){
 function f_rule(data) {
 	API.sendChat('/me Rules: '+o_settings.rules);
 }
-function f_about(data) {
-	API.sendChat('/me [foxbot v'+cur_Vers+'] by 1NT, foxtrotfire, royal soda, [tw].me. Type in "/commands" to find out how to interact with me.');
-}
+
 function f_brb(data) {
 	API.sendChat('@'+data.from+' Hurry back!!');
 }
