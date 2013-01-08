@@ -337,7 +337,7 @@ function f_djAdvance(obj){
 		// normal mode (and if track length more than <maxSongLength>): set a timer for <maxSongLength> mins to skip the track
 			var o_djs = API.getDJs();
 			o_tmp.username = o_djs[0].username;
-			API.sendChat('@'+o_tmp.username+' [WARNING] Sorry, your song is over the allowed time limit and will be automagically skipped after '+o_settings.maxSongLength+' minutes.');
+			API.sendChat('@'+o_tmp.username+' [ADVERTENCIA] Perdon, pero tu canción supera el limite de minutos permitido en esta sala, tu canción sera quitada automaticamente dentro de '+o_settings.maxSongLength+' minutos.');
 			o_settings.i_timerID = window.setTimeout(o_settings.f_autoSkip, (o_settings.maxSongLength)*60*1000);
 		}
 	}
