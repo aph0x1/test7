@@ -204,12 +204,12 @@ function f_commands(data){
 }
 
 function f_skip(data) {
-    API.sendChat('/me El turno del dj ha sido saltado por un moderador!');
+    API.sendChat('/me Current DJ has been skipped by operator!');
     window.setTimeout(function(){new ModerationForceSkipService(Models.room.data.historyID);}, 1000);
-	window.setTimeout(function(){API.sendChat("/me Tu turno ha sido saltado debido a que tu canción no cumple con algunas reglas de nuestra sala.");}, 2000);
+	window.setTimeout(function(){API.sendChat("/me Your song got skipped because it was either not on genre, overplayed or (the outro) was too long.");}, 2000);
 }
 function f_long() {
-	API.sendChat('@'+o_tmp.username+' Tu canción se ha escuchado por '+o_settings.maxSongLength+' minutos y ahora se saltara tu turno');
+	API.sendChat('@'+o_tmp.username+' Your song has played for '+o_settings.maxSongLength+' minutes and will now be skipped!');
     window.setTimeout(function(){new ModerationForceSkipService(Models.room.data.historyID);}, 1000);
 }
 function f_lock(data) {
@@ -302,7 +302,7 @@ function f_checkChat(data) {
 						o_chatcmds[s].f(data);
 					}
 					else{
-						API.sendChat('Lo siento @' + data.from + ', pero no te puedo dejar hacer eso.');
+						API.sendChat('I\'m sorry, @' + data.from + ', but I\'m afraid I can\'t let you do that.');
 					}
 				}
 				else{
@@ -355,7 +355,7 @@ function f_djAdvance(obj){
 		// normal mode (and if track length more than <maxSongLength>): set a timer for <maxSongLength> mins to skip the track
 			var o_djs = API.getDJs();
 			o_tmp.username = o_djs[0].username;
-			API.sendChat('@'+o_tmp.username+' Lo siento pero tu canción ha exedido el limite de minutos, tu turno se terminara automaticamente dentro de  '+o_settings.maxSongLength+' minutos');
+			API.sendChat('@'+o_tmp.username+' [WARNING] Sorry, your song is over the allowed time limit and will be automagically skipped after '+o_settings.maxSongLength+' minutes.');
 			o_settings.i_timerID = window.setTimeout(o_settings.f_autoSkip, (o_settings.maxSongLength)*60*1000);
 		}
 	}
