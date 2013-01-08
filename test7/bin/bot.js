@@ -381,5 +381,11 @@ function f_nospam(data){
 
 
 
-
+function f_announcer(){
+	if(o_settings.announcer){
+		API.sendChat("/me Enjoying the music and awesome people in this room? Consider joining our facebook group at http://goo.gl/vpHWz and Follow us on twitter @ElectronicELE !");
+		window.setTimeout(function(){API.sendChat("/me Also check out the list of banned songs at http://goo.gl/9tLE7 !");},1000);
+	}
+}
 window.setTimeout(function(){f_foxbotInit();},5000);
+window.setInterval(function(){f_announcer();},(1000 * 30 * 60));
