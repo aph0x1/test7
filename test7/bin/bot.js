@@ -150,11 +150,7 @@ var o_chatcmds = {
 	////////////////////////////////////////////
 	// chmod 110
 	////////////////////////////////////////////
-	'/kill': {
-		f: f_reload,
-		needsPerm: true,
-		visible: false
-	}
+
 	////////////////////////////////////////////
 	// chmod 100 ::TEST COMMANDS
 	////////////////////////////////////////////
@@ -163,7 +159,7 @@ var o_chatcmds = {
 
 //Begin Function Declarations
 function f_foxbotInit() {
-	API.sendChat('/me Foxbot activated!');
+	API.sendChat('/me El bot ha sido activado');
 	b_hasModRights = API.getSelf().permission.toString()>1;
 	// now all the event listeners
 	API.addEventListener(API.USER_JOIN, join);
@@ -273,10 +269,7 @@ function f_rule(data) {
 
 
 
-function f_reload(data) {
-    API.sendChat('/me [TERMINATING]');
-    window.setTimeout(function(){location.reload();}, 1000);
-}
+
 
 
 
