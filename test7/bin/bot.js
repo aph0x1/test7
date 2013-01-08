@@ -111,7 +111,7 @@ var o_chatcmds = {
 		needsLocalPerm: true,
 		visible: true
 	},
-	'/reintentar': {
+	'/retry': {
 		f: f_retry,
 		needsPerm: true,
 		needsLocalPerm: true,
@@ -198,7 +198,7 @@ function join(user){
 
 
 function f_curate(data){
-	API.sendChat("/me " + data.user.username + " Le gusta esta canción");
+	API.sendChat("/me " + data.user.username + " Le gusta esta");
 }
 function f_commands(data){
 	var cmds = '';
@@ -247,7 +247,7 @@ function f_unlock(data){
 	);
 }
 function f_retry(data) {
-	API.sendChat('/me Por favor selecciona una canción diferente e intentalo denuevo.');
+	API.sendChat('/me Please choose a different song and try again.');
 	window.setTimeout(function(){rpcGW.execute('room.update_options', null, Models.room.data.id,
 		{
 			name: Models.room.data.name,
@@ -304,12 +304,12 @@ function f_set(data) {
 		s = 'o_settings.'+args[0]+' = \''+setValue+'\';';
     }
 	eval(s);
-	API.sendChat('/me '+args[0]+' ahora '+eval('o_settings.'+args[0]));
+	API.sendChat('/me '+args[0]+' now '+eval('o_settings.'+args[0]));
 }
 
 function f_checkChat(data) {
 //Will work on this. It's kind of annoying as it stands and doesn't allow for cool stuff
-	if((data.type == "mensaje") && (data.fromID != API.getSelf().id) ) {
+	if((data.type == "message") && (data.fromID != API.getSelf().id) ) {
 		for(var s in o_chatcmds) {
 			if(data.message.toString().toLowerCase().indexOf(s) != -1) { // The only requesite of this more efficient chat parsing system is that all chat vars are lowercase
 				if(o_chatcmds[s].needsPerm){
