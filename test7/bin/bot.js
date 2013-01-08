@@ -129,7 +129,7 @@ var o_chatcmds = {
 		visible: true
 	},
 
-	'/unlock': {
+	'/desbloquear': {
 		f: f_unlock,
 		needsPerm: true,
 		needsLocalPerm: true,
@@ -154,11 +154,7 @@ var o_chatcmds = {
 	////////////////////////////////////////////
 	// chmod 110
 	////////////////////////////////////////////
-	'/kill': {
-		f: f_reload,
-		needsPerm: true,
-		visible: false
-	}
+
 	////////////////////////////////////////////
 	// chmod 100 ::TEST COMMANDS
 	////////////////////////////////////////////
@@ -167,7 +163,7 @@ var o_chatcmds = {
 
 //Begin Function Declarations
 function f_foxbotInit() {
-	API.sendChat('/me Foxbot activated!');
+	API.sendChat('/me El bot esta activado');
 	b_hasModRights = API.getSelf().permission.toString()>1;
 	// now all the event listeners
 	API.addEventListener(API.USER_JOIN, join);
@@ -179,7 +175,7 @@ function f_foxbotInit() {
 }
 function join(user){
 	if(user.id=="50aeb47c96fba52c3ca0e10a"){
-		API.sendChat("/me :: Ohhh miren quien ha ingresado a la sala!!, @"+user.username+" ! Bienvenido");
+		API.sendChat("/me :: Ohhh miren quien ha ingresado a la sala, @"+user.username+" ! Bienvenido");
 	}
 	else if(user.permission.toString()>1){
 		API.sendChat("/me :: Acaba de ingresar un moderador a la sala!!. El nombre del moderador es  "+user.username+" . Venga, saludenlo!");
@@ -204,16 +200,16 @@ function f_commands(data){
 		}
 	}
 	cmds_clean = cmds.slice(0, -2);
-	API.sendChat('/me Commands currently supported are: '+cmds_clean);
+	API.sendChat('/me Comandos del chat: '+cmds_clean);
 }
 
 function f_skip(data) {
-    API.sendChat('/me Current DJ has been skipped by operator!');
+    API.sendChat('/me El turno del dj ha sido saltado por un moderador!');
     window.setTimeout(function(){new ModerationForceSkipService(Models.room.data.historyID);}, 1000);
-	window.setTimeout(function(){API.sendChat("/me Your song got skipped because it was either not on genre, overplayed or (the outro) was too long.");}, 2000);
+	window.setTimeout(function(){API.sendChat("/me Tu turno ha sido saltado debido a que tu canción no cumple con algunas reglas de nuestra sala.");}, 2000);
 }
 function f_long() {
-	API.sendChat('@'+o_tmp.username+' Your song has played for '+o_settings.maxSongLength+' minutes and will now be skipped!');
+	API.sendChat('@'+o_tmp.username+' Tu canción se ha escuchado por '+o_settings.maxSongLength+' minutos y ahora se saltara tu turno');
     window.setTimeout(function(){new ModerationForceSkipService(Models.room.data.historyID);}, 1000);
 }
 function f_lock(data) {
@@ -230,7 +226,7 @@ function f_lock(data) {
 		);
 }
 function f_unlock(data){
-	API.sendChat('/me Dj Booth has been unlocked by operator!');
+	API.sendChat('/me La cabina de dj ha sido desbloqueada');
     rpcGW.execute('room.update_options', null, Models.room.data.id,
 		{
 			name: Models.room.data.name,
@@ -278,10 +274,6 @@ function f_rule(data) {
 
 
 
-function f_reload(data) {
-    API.sendChat('/me [TERMINATING]');
-    window.setTimeout(function(){location.reload();}, 1000);
-}
 
 
 function f_set(data) {
@@ -310,7 +302,7 @@ function f_checkChat(data) {
 						o_chatcmds[s].f(data);
 					}
 					else{
-						API.sendChat('I\'m sorry, @' + data.from + ', but I\'m afraid I can\'t let you do that.');
+						API.sendChat('Lo siento @' + data.from + ', pero no te puedo dejar hacer eso.');
 					}
 				}
 				else{
@@ -363,7 +355,7 @@ function f_djAdvance(obj){
 		// normal mode (and if track length more than <maxSongLength>): set a timer for <maxSongLength> mins to skip the track
 			var o_djs = API.getDJs();
 			o_tmp.username = o_djs[0].username;
-			API.sendChat('@'+o_tmp.username+' [WARNING] Sorry, your song is over the allowed time limit and will be automagically skipped after '+o_settings.maxSongLength+' minutes.');
+			API.sendChat('@'+o_tmp.username+' Lo siento pero tu canción ha exedido el limite de minutos, tu turno se terminara automaticamente dentro de  '+o_settings.maxSongLength+' minutos');
 			o_settings.i_timerID = window.setTimeout(o_settings.f_autoSkip, (o_settings.maxSongLength)*60*1000);
 		}
 	}
@@ -389,11 +381,5 @@ function f_nospam(data){
 
 
 
-function f_announcer(){
-	if(o_settings.announcer){
-		API.sendChat("/me Enjoying the music and awesome people in this room? Consider joining our facebook group at http://goo.gl/vpHWz and Follow us on twitter @ElectronicELE !");
-		window.setTimeout(function(){API.sendChat("/me Also check out the list of banned songs at http://goo.gl/9tLE7 !");},1000);
-	}
-}
+
 window.setTimeout(function(){f_foxbotInit();},5000);
-window.setInterval(function(){f_announcer();},(1000 * 30 * 60));
