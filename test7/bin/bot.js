@@ -111,7 +111,7 @@ var o_chatcmds = {
 		needsLocalPerm: true,
 		visible: true
 	},
-	'/retry': {
+	'/reintentar': {
 		f: f_retry,
 		needsPerm: true,
 		needsLocalPerm: true,
@@ -242,7 +242,7 @@ function f_unlock(data){
 	);
 }
 function f_retry(data) {
-	API.sendChat('/me Please choose a different song and try again.');
+	API.sendChat('/me Por favor selecciona otra canción');
 	window.setTimeout(function(){rpcGW.execute('room.update_options', null, Models.room.data.id,
 		{
 			name: Models.room.data.name,
