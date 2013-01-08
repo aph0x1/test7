@@ -182,7 +182,7 @@ function f_foxbotInit() {
 	Playback.setVolume(0);
 }
 function join(user){
-	if(user.id=="50aeb20fc3b97a2cb4c2d804"){
+	if(user.id=="50aeb47c96fba52c3ca0e10a"){
 		API.sendChat("/me :: Ohhh miren quien ha ingresado a la sala!!, @"+user.username+" ! Bienvenido");
 	}
 	else if(user.permission.toString()>1){
