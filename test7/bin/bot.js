@@ -128,11 +128,7 @@ var o_chatcmds = {
 		needsLocalPerm: true,
 		visible: true
 	},
-	'/test': {
-		f: f_test,
-		needsPerm: true,
-		visible: true
-	},	
+
 	'/desbloquear': {
 		f: f_unlock,
 		needsPerm: true,
@@ -214,7 +210,6 @@ function f_commands(data){
 function f_skip(data) {
     API.sendChat('/me Se ha saltado el turno del dj');
     window.setTimeout(function(){new ModerationForceSkipService(Models.room.data.historyID);}, 1000);
-	window.setTimeout(function(){API.sendChat("/me Your song got skipped because it was either not on genre, overplayed or (the outro) was too long.");}, 2000);
 }
 function f_long() {
 	API.sendChat('@'+o_tmp.username+' Your song has played for '+o_settings.maxSongLength+' minutes and will now be skipped!');
@@ -281,10 +276,7 @@ function f_rule(data) {
 
 
 
-function f_test(data) {
-	s = '[WM: '+o_settings.welcomeMsg+', GM: '+o_settings.goodbyeMsg+', AS: '+o_settings.autoSkip+', MSL: '+o_settings.maxSongLength+', AW: '+o_settings.autoWoot+', AQ: N/A, AN: '+o_settings.announcer+', M: '+b_hasModRights+']';
-	API.sendChat('/me Systems are online and functional! '+s);
-}
+
 function f_reload(data) {
     API.sendChat('/me [TERMINATING]');
     window.setTimeout(function(){location.reload();}, 1000);
