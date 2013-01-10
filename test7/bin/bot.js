@@ -361,45 +361,7 @@ function f_nospam(data){
 	API.moderateDeleteChat(data.chatID);
 }
 
-  cookieCommand = (function(_super) {
 
-    __extends(cookieCommand, _super);
-
-    function cookieCommand() {
-      return cookieCommand.__super__.constructor.apply(this, arguments);
-    }
-
-    cookieCommand.prototype.init = function() {
-      this.command = 'cookie';
-      this.parseType = 'startsWith';
-      return this.rankPrivelege = 'mod';
-    };
-
-    cookieCommand.prototype.getCookie = function() {
-      var c, cookies;
-      cookies = ["a chocolate chip cookie", "a sugar cookie", "an oatmeal raisin cookie", "a 'special' brownie", "an animal cracker", "a scooby snack", "a blueberry muffin", "a cupcake"];
-      c = Math.floor(Math.random() * cookies.length);
-      return cookies[c];
-    };
-
-    cookieCommand.prototype.functionality = function() {
-      var msg, r, user;
-      msg = this.msgData.message;
-      r = new RoomHelper();
-      if (msg.length > 8) {
-        user = r.lookupUser(msg.substr(8));
-        if (user === false) {
-          API.sendChat("/em doesn't see '" + msg.substr(8) + "' in room and eats cookie himself");
-          return false;
-        } else {
-          return API.sendChat("@" + user.username + ", @" + this.msgData.from + " has rewarded you with " + this.getCookie() + ". Enjoy.");
-        }
-      }
-    };
-
-    return cookieCommand;
-
-  })(Command);
 
 
 
