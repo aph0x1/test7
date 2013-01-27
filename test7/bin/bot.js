@@ -65,7 +65,7 @@ var o_settings = {
 	announcer: true,
 	maxSongLength: 8, // in mins.
     	rules: 'Cualquier género de música es permitido, no superar los 8min. Muestra respeto a todos en la sala',
-    	welcome: 'T_D_S P_T_S',
+    	welcome: '',
 	strictMode: false,
 	i_timerID: null,
 	f_autoSkip: f_long
