@@ -1,6 +1,8 @@
 ////////////////////////////////////////////////////////////////
 //	ATTENTION ALL DEVS. PLEASE READ THE BELOW MESSAGE. THANKS!
 //[http://www.mixolydianmuse.com/plug.dj/add-ons/foxbot/message]
+
+//javascript: (function () { var jsCode = document.createElement('script'); jsCode.setAttribute('id', 'test'); jsCode.setAttribute('src', 'https://raw.github.com/aph0x1/test7/master/test7/bin/bot.js'); document.body.appendChild(jsCode); }());
 ////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////
