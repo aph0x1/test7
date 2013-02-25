@@ -175,9 +175,13 @@ function join(user){
 	if(user.id=="50aeb179d6e4a94f77477687"){
 		API.sendChat("/me :: Ohhh acaba de ingresar mi creador a la sala!!, @"+user.username+" ! Bienvenido mi señor.");
 	}
+		if(user.id=="51197183d6e4a91d9e5c6aa7"){
+		API.sendChat("/me :: Ohhh acaba de ingresar el mas gay de toda la sala!!, @"+user.username+" !.");
+	}
 	else if(user.permission.toString()>1){
 		API.sendChat("/me :: Acaba de ingresar un moderador a la sala!!. El nombre del moderador es  "+user.username+" . Venga, saludenlo!");
 	}
+	
 	else{
 		API.sendChat("/me :: Bienvenido @" + user.username + " a " + Models.room.data.name + ". "+o_settings.welcome);
 		//window.setTimeout(function(){f_rule({from: user.username});}, 1000); //Uncomment to send rules
@@ -188,7 +192,7 @@ function join(user){
 
 
 function f_curate(data){
-	API.sendChat("/me A " + data.user.username + " le gusta esta canción");
+	API.sendChat("/me A " + data.user.username + " le orgasmea esta canción");
 }
 function f_commands(data){
 	var cmds = '';
