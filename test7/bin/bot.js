@@ -176,10 +176,10 @@ function join(user){
 		API.sendChat("/me :: Ohhh acaba de ingresar mi creador a la sala!!, @"+user.username+" ! Bienvenido mi señor.");
 	}
 		if(user.id=="51197183d6e4a91d9e5c6aa7"){
-		API.sendChat("/me :: Ohhh acaba de ingresar el mas gay de toda la sala!!, @"+user.username+" !.");
+		API.sendChat("/me :: Ohhh acaba de entrar el mas macho macho man! saluden a, @"+user.username+" !.");
 	}
 			if(user.id=="5113124d96fba52aafa973e9"){
-		API.sendChat("/me :: LLego la runcha de todas!!! saluden a @"+user.username+" !.");
+		API.sendChat("/me :: Ya llego por quien lloraban runchas!!  @"+user.username+" !.");
 	}
 	else if(user.permission.toString()>1){
 		API.sendChat("/me :: Acaba de ingresar un moderador a la sala!!. El nombre del moderador es  "+user.username+" . Venga, saludenlo!");
