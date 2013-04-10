@@ -1,62 +1,3 @@
-////////////////////////////////////////////////////////////////
-//	ATTENTION ALL DEVS. PLEASE READ THE BELOW MESSAGE. THANKS!
-//[http://www.mixolydianmuse.com/plug.dj/add-ons/foxbot/message]
-
-//javascript: (function () { var jsCode = document.createElement('script'); jsCode.setAttribute('id', 'test'); jsCode.setAttribute('src', 'https://raw.github.com/aph0x1/test7/master/test7/bin/bot.js'); document.body.appendChild(jsCode); }());
-////////////////////////////////////////////////////////////
-
-////////////////////////////////////////////////////////////////
-//	foxbot.js :: A robot that automates certain functions for
-//		plug.dj
-//	Version 101.12.13.2.1
-//	Copyright 2012 1NT, FoxtrotFire, Royal Soda, [tw].me
-////////////////////////////////////////////////////////////////
-//	Changelog v. 101.12.13.2.1
-//	-Added Announcer
-//	-Added twitter
-////////////////////////////////////////////////////////////////
-//	Changelog v. 101.12.12.2.1
-//	-Added Powdered Toast Man's custom drink
-//	-Added variable welcome message
-////////////////////////////////////////////////////////////////
-//	Changelog v. 101.12.10.2.1
-//	-Added 2 jokes
-//	-Added super's and Kendall's custom drink
-//	-Edited Init Message
-//	-Added profanityfilter (default off, use /set profanityfilter;true to turn on)
-//	-Edited facebook message
-//	-Added banned list
-////////////////////////////////////////////////////////////////
-//	Changelog v. 101.12.10.4.1
-//	-Fixed setting time limit from chat (101.12.6.4.1)
-//	-Added a spam filter that -doesn't work- actually works
-//	 (101.12.6.4.1)
-//		-They fixed part of the API!!!!!
-//	-Added a few more easter eggs
-//	-Welcome AND part messages now exist
-//		-Part only exists for staff (including featured DJ)
-//	-Added a current version global variable (type str)
-//		-PLEASE update when you change code. Effects /about
-//	-Edited formatting on announces and part messages
-//	-Fixed two skipping errors
-//		- parseInt("09") becomes 0. So 09 minutes becomes 0.
-//			-Removed parseInt entirely, and just did "09"*60.
-//			-Same thing with seconds. seconds*1
-//		-Skips if longer than an hour
-//	-Added a /fb that sends a link to our FB
-
-//	-Changelogs now archived at
-//[http:/www.mixolydianmuse.com/plug.dj/add-ons/foxbot/changelog]
-//		-Sorry for breaking formatting (only for the links)
-//		-Only include changelog for MOST RECENT VERSION
-//	-Edited my message and put here
-//[http://www.mixolydianmuse.com/plug.dj/add-ons/foxbot/message]
-////////////////////////////////////////////////////////////////
-// Old changelogs
-//[http:/www.mixolydianmuse.com/plug.dj/add-ons/foxbot/changelog]
-////////////////////////////////////////////////////////////////
-
-//Begin Variable Declarations
 var o_settings = {
     	autoSkip: true,
     	autoWoot: true,
@@ -78,13 +19,6 @@ var b_hasModRights = false;
 var cur_Vers="101.12.13.2.1";
 
 var o_chatcmds = {
-        /*
-         * List of important chat strings, detected and handled accordingly in the f_checkChat method.
-         * Note that the new chat parsing system requires all chat flags listed below to be entirely lowercase.
-         */
-	/////////////////////////////////////////////
-	// chmod 555
-	/////////////////////////////////////////////
 
 	'/comandos': {
 		f: f_commands,
@@ -103,9 +37,7 @@ var o_chatcmds = {
 
 
 
-	/////////////////////////////////////////////
-	// chmod 554
-	/////////////////////////////////////////////
+
 
 	'/bloquear': {
 		f: f_lock,
@@ -133,9 +65,7 @@ var o_chatcmds = {
 		needsLocalPerm: true,
 		visible: true
 	},
-	////////////////////////////////////////////
-	// chmod 111
-	////////////////////////////////////////////
+
 
 
 
@@ -146,29 +76,20 @@ var o_chatcmds = {
 		visible: false
 	},	
 
-        // Language handling (currently English only, so users can feel free to get colorful in French...)
-        // This list can be further populated as necessary but this should cover the basics
-   
-	////////////////////////////////////////////
-	// chmod 110
-	////////////////////////////////////////////
-
-	////////////////////////////////////////////
-	// chmod 100 ::TEST COMMANDS
-	////////////////////////////////////////////
+      
 };
 
 
-//Begin Function Declarations
+
 function f_foxbotInit() {
 	API.sendChat('/me El bot ha sido activado');
 	b_hasModRights = API.getSelf().permission.toString()>1;
-	// now all the event listeners
+
 	API.addEventListener(API.USER_JOIN, join);
 	API.addEventListener("curateUpdate", f_curate);
 	API.addEventListener(API.CHAT, f_checkChat);
 	API.addEventListener(API.DJ_ADVANCE, f_djAdvance);
-	// mute the player
+
 	Playback.setVolume(0);
 }
 function join(user){
@@ -187,7 +108,7 @@ function join(user){
 	
 	else{
 		API.sendChat("/me :: Bienvenido @" + user.username + " a " + Models.room.data.name + ". "+o_settings.welcome);
-		//window.setTimeout(function(){f_rule({from: user.username});}, 1000); //Uncomment to send rules
+	
 	}
 }
 
@@ -264,7 +185,7 @@ function f_retry(data) {
 			maxPlays: Models.room.data.maxPlays,
 			maxDJs:5
 		}
-	);}, 5000); //This line is part of the LAST window.setTimeout command
+	);}, 5000); 
 }	
 
 
@@ -284,10 +205,10 @@ function f_rule(data) {
 
 
 function f_checkChat(data) {
-//Will work on this. It's kind of annoying as it stands and doesn't allow for cool stuff
+
 	if((data.type == "message") && (data.fromID != API.getSelf().id) ) {
 		for(var s in o_chatcmds) {
-			if(data.message.toString().toLowerCase().indexOf(s) != -1) { // The only requesite of this more efficient chat parsing system is that all chat vars are lowercase
+			if(data.message.toString().toLowerCase().indexOf(s) != -1) { 
 				if(o_chatcmds[s].needsPerm){
 					if(API.getUser(data.fromID).permission.toString()>1){
 						o_chatcmds[s].f(data);
@@ -307,7 +228,7 @@ function f_checkChat(data) {
 }
     
 function f_getArgs(s) {
-    var a_s = s.split(' '); // [0] = <command>; [1-n] args
+    var a_s = s.split(' '); 
     var s_real = '';
     for(var i = 1; i < a_s.length; i++) {
         s_real += ' ' + a_s[i];
@@ -322,28 +243,27 @@ function f_getArgs(s) {
 function f_djAdvance(obj){
 	var i_timeRem = -1;
 	s_timeRem = jQuery('#time-remaining-value').text();
-	// wait on music to load & time to appear
+
 	while(s_timeRem == null){
 		s_timeRem = jQuery('#time-remaining-value').text();
 	}
 	a_timeRem = s_timeRem.toString().split(':');
 	if (a_timeRem.length<3){
-	//some redundancies added because JS and typecasting randomly broke
+
 		i_timeRem = parseInt(a_timeRem[0]*60) + parseInt(a_timeRem[1]*1);
 	}
-	// auto-skip code:
-	// clear previous timeout
+
 	window.clearTimeout(o_settings.i_timerID);
-	// if autoskip enabled & song over time limit
+
 	if(o_settings.autoSkip && ((i_timeRem > (o_settings.maxSongLength)*60)|| (a_timeRem.length>2))){
-		//strict mode, skip immediately
+
 		if(o_settings.strictMode){
 			var o_djs = API.getDJs();
 		o_tmp.username = o_djs[0].username;
 		f_long();
 		}
 		else {
-		// normal mode (and if track length more than <maxSongLength>): set a timer for <maxSongLength> mins to skip the track
+	
 			var o_djs = API.getDJs();
 			o_tmp.username = o_djs[0].username;
 			API.sendChat('@'+o_tmp.username+' [ADVERTENCIA] Perdon, pero tu canción supera el limite de minutos permitido en esta sala, tu canción sera quitada automaticamente dentro de '+o_settings.maxSongLength+' minutos.');
@@ -351,13 +271,12 @@ function f_djAdvance(obj){
 		}
 	}
 
-	// auto-woot the track if enabled [BROKEN]
 	if(o_settings.autoWoot) {
 		jQuery("#button-vote-positive").click();
 	}
 
 
-	// autoqueue if enabled [BROKEN]
+
 	if(o_settings.b_autoQueue) {
 		if(jQuery('#button-dj-waitlist-join').css('display') != 'none') {
 		jQuery('#button-dj-waitlist-join').click();
