@@ -6,7 +6,7 @@ var o_settings = {
     	goodbyeMsg: true,
 	profanityfilter: false,
 	announcer: true,
-	maxSongLength: 8, // in mins.
+	maxSongLength: 8, 
     	rules: 'Cualquier género de música es permitido, no superar los 8min. Muestra respeto a todos en la sala',
     	welcome: '',
 	strictMode: false,
